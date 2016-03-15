@@ -67,7 +67,33 @@ class UserController extends Controller
         return redirect('/')->withMessage('Register successfully');
     }
 
+    public function postLogin()
+    {
+        $email = Input::get('email');
+        $user = User::where('email', $email)->first();
+        if($user == null)
+            return redirect('/auth/register')
+                ->withErrors('E-mail not found');
 
+        $password = Input::get('password');
+
+        if(password_verify($password, $user->password))
+        {
+            Auth::login($user);
+            return redirect('/')
+                ->withMessage('Login successfully');
+        }
+        else
+        {
+            return redirect('/auth/login')
+                ->with('email', $email)
+                ->withErrors('Wrong Password');
+        }
+    }
+
+    /**
+     * @return mixed
+     */
     public function logout()
     {
         Auth::logout();
