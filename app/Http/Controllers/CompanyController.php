@@ -12,4 +12,14 @@ class CompanyController extends Controller
     {
         return view('company.account');
     }
+
+    public function getRegister()
+    {
+        return view('company.register');
+    }
+
+    public function getLogin()
+    {
+        return view('company.login');
+    }
 }
