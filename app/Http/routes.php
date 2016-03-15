@@ -33,4 +33,6 @@ Route::group(['middleware' => ['web']], function () {
     Route::post('/auth/register', 'UserController@postRegister');
     Route::post('/auth/login', 'UserController@postLogin');
 
+    Route::get('/company', 'CompanyController@account');
+
 });

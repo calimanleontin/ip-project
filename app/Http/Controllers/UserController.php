@@ -42,26 +42,26 @@ class UserController extends Controller
     {
         $name = Input::get('username');
         $duplicate = User::where('name', $name)->first();
-        if($duplicate != null)
+        if ($duplicate != null)
             return redirect('/auth/register')
                 ->withErrors('Name already used');
 
         $email = Input::get('email');
         $duplicate = User::where('email', $email)->first();
-        if($duplicate != null)
+        if ($duplicate != null)
             return redirect('/auth/register')
                 ->withErrors('Email already used');
 
         $password = Input::get('password');
         $confirm = Input::get('confirm');
-        if($password != $confirm)
+        if ($password != $confirm)
             return redirect('/auth/register')
                 ->withErrors('Password does not match');
 
         $user = new User();
         $user->name = $name;
         $user->email = $email;
-        $user->password = password_hash($password,PASSWORD_BCRYPT);
+        $user->password = password_hash($password, PASSWORD_BCRYPT);
         $user->save();
         Auth::login($user);
         return redirect('/')->withMessage('Register successfully');
@@ -71,20 +71,17 @@ class UserController extends Controller
     {
         $email = Input::get('email');
         $user = User::where('email', $email)->first();
-        if($user == null)
+        if ($user == null)
             return redirect('/auth/register')
                 ->withErrors('E-mail not found');
 
         $password = Input::get('password');
 
-        if(password_verify($password, $user->password))
-        {
+        if (password_verify($password, $user->password)) {
             Auth::login($user);
             return redirect('/')
                 ->withMessage('Login successfully');
-        }
-        else
-        {
+        } else {
             return redirect('/auth/login')
                 ->with('email', $email)
                 ->withErrors('Wrong Password');
@@ -100,6 +97,4 @@ class UserController extends Controller
         return redirect('/')
             ->withMessage('Logout successfully');
     }
-
-
 }
