@@ -8,6 +8,10 @@ p.response-btn
 {
     color: #2e6da4;
 }
+#map-canvas{
+    width: 600px;
+    height: 600px;
+}
 p.response-btn:hover
 {
     color: #2e6da4;
