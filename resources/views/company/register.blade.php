@@ -6,10 +6,12 @@
 @section('content')
     <div class="col-sm-4">
         {{Form::open(array('url'=>'/company/register', 'files'=>true))}}
+
+        {!! Form::token()    !!}
         <div class="form-group">
 
             {!! Form::label('name', 'Name') !!}
-            {!! Form::text('name', '', ['class'=>'form-control']) !!}
+            {!! Form::text('name', '', ['class'=>'form-control', 'required']) !!}
         </div>
 
         <div class="form-group">
@@ -20,15 +22,33 @@
 
         <div class="form-group">
             <label for="">Lat</label>
-            <input type="text" class="form-control input-sm" name="lat" id="lat">
+            <input type="text" class="form-control input-sm" name="lat" id="lat" required>
         </div>
 
         <div class="form-group">
             <label for="">Lng</label>
-            <input type="text" class="form-control input-sm" name="lng" id="lng">
+            <input type="text" class="form-control input-sm" name="lng" id="lng" required>
         </div>
 
-        <button class="btn btn-sm btn-danger">Save</button>
+        <div class="form-group">
+            {!! Form::label('email', 'Email:') !!}
+            {!! Form::text('email', '', ['class'=>'form-control', 'placeholder' => 'Email', 'required' => true, 'type' => 'email']) !!}
+        </div>
+
+        <div class="form-group">
+            {!! Form::label('password', 'Password:') !!}
+            {!! Form::password('password', ['class'=>'form-control', 'required']) !!}
+        </div>
+
+        <div class="form-group">
+            {!! Form::label('confirm', 'Confirm:') !!}
+            {!! Form::password('confirm', ['class'=>'form-control','required']) !!}
+        </div>
+
+        <div class="col-md-5">
+            {!! Form::submit('Submit', ['class'=>'form-control btn btn-default']) !!}
+        </div>
+
         {{Form::close()}}
     </div>
 

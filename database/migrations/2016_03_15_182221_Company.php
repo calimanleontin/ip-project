@@ -14,10 +14,13 @@ class Company extends Migration
     {
         Schema::create('companies', function(Blueprint $table){
             $table->increments('id');
-            $table->string('name');
+            $table->string('name')->unique();
+            $table->string('email')->unique();
+            $table->string('password');
+            $table->text('description');
             $table->string('slug');
-            $table->double('lat');
-            $table->double('lng');
+            $table->string('lat');
+            $table->string('lng');
             $table->timestamps();
         });
     }
