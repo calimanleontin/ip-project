@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Companies;
 use App\Tags;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Http\Request;
 use \Auth;
 use \Response;
@@ -74,5 +75,21 @@ class TagController extends Controller
         else
             return redirect('/')
                 ->withErrors('You have not sufficient permissions');
+    }
+
+    /**
+     * @return mixed
+     */
+    public function store()
+    {
+        $name = Input::get('name');
+        $description = Input::get('description');
+        $slug = str_slug($name);
+        $tag = new Tags();
+        $tag->name = $name;
+        $tag->description = $description;
+        $tag->slug = $slug;
+        $tag->save();
+        return redirect('/')->withMessage('Success');
     }
 }

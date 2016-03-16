@@ -10,7 +10,7 @@
         <label for="name">Name:</label>
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
         <div class="form-group">
-            <input required="required" value="{{ old('name') }}" placeholder="Enter tag name" type="text" name = "name "class="form-control" />
+            <input required="required" value="{{ old('name') }}" placeholder="Enter tag name" type="text" name = "name" class="form-control" />
         </div>
         <label for="description">Description:</label>
         <div class="form-group">
