@@ -1,1 +1,1 @@
-var app = angular.module('app', ['mainCtrl', 'TagService']);
+var app = angular.module('app', ['mainCtrl', 'tagService']);

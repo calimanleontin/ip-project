@@ -21,7 +21,16 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCyB6K1CFUQ1RwVJ-nyXxd6W0rfiIBe12Q&libraries=places"
             type="text/javascript"></script>
-<body>
+
+    <!-- Angular  -->
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.8/angular.min.js"></script> <!-- load angular -->
+
+        {{--Angular local--}}
+
+    <script src="js/controllers/mainCtrl.js"></script> <!-- load our controller -->
+    <script src="js/services/tagService.js"></script> <!-- load our service -->
+    <script src="js/app.js"></script> <!-- load our application -->
+<body ng-app="app" ng-controller="mainController">
 <nav class="navbar navbar-default">
     <div class="container-fluid">
         <div class="navbar-header">
