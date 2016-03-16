@@ -39,4 +39,9 @@ class User extends Authenticatable
     {
         return $this->hasOne('App\Companies');
     }
+
+    public function is_company()
+    {
+        return $this->company() != null ;
+    }
 }

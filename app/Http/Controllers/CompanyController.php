@@ -37,6 +37,9 @@ class CompanyController extends Controller
         return view('company.login');
     }
 
+    /**
+     * @return $this
+     */
     public function postRegister()
     {
         $name = Input::get('name');
