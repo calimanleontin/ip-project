@@ -18,7 +18,7 @@ class Company extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->text('description');
-            $table->string('slug');
+            $table->string('slug')->unique();
             $table->string('lat');
             $table->string('lng');
             $table->timestamps();

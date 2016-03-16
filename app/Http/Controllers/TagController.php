@@ -83,7 +83,12 @@ class TagController extends Controller
     public function store()
     {
         $name = Input::get('name');
+        $duplicate = Tags::where('name', $name)->first();
         $description = Input::get('description');
+        if($duplicate != null)
+        return view('tags.create')
+                ->withErrors('Name already used')
+                ->with('description', $description);
         $slug = str_slug($name);
         $tag = new Tags();
         $tag->name = $name;

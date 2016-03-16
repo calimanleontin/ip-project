@@ -60,6 +60,7 @@ class CompanyController extends Controller
         $company->email = $email;
         $company->lat = $lat;
         $company->lng = $lng;
+        $company->slug = str_slug($name);
         $company->password = password_hash($password, PASSWORD_BCRYPT);
         $company->save();
         Session::put('company', $company);
