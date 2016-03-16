@@ -102,4 +102,22 @@ class CompanyController extends Controller
         }
     }
 
+    public function edit()
+    {
+        if(!Auth::guest() and Auth::user()->is_company())
+        {
+            $user = Auth::user();
+            if($user->is_company())
+            {
+                $company = $user->company;
+                return view('company.edit')
+                    ->withUser($user)
+                    ->withCompany($company);
+            }
+            else
+                return redirect('/')->withErrors('Error');
+        }
+        else
+            return redirect('/')->withErrors('Error');
+    }
 }

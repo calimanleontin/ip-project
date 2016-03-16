@@ -17,4 +17,12 @@ class Companies extends Model
     {
         return $this->belongsToMany('App\Tags');
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function user()
+    {
+        return $this->hasOne('App\User');
+    }
 }
