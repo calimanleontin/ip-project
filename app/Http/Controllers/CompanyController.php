@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Companies;
+use App\User;
+use \Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use \Session;
@@ -43,11 +45,11 @@ class CompanyController extends Controller
         $lng = Input::get('lng');
         $password = Input::get('password');
         $confirm = Input::get('confirm');
-        $duplicate = Companies::where('name', $name)->first();
+        $duplicate = User::where('name', $name)->first();
         if($duplicate != null)
             return redirect('/company/register')
                 ->withErrors('Name already in use');
-        $duplicate = Companies::where('email', $email)->first();
+        $duplicate = User::where('email', $email)->first();
         if($duplicate != null)
             return redirect('/company/register')
                 ->withErrors('Email already in use');
@@ -55,15 +57,20 @@ class CompanyController extends Controller
             return redirect('/company/register')
                 ->withErrors('Passwords did not match');
 
+        $user = new User();
+        $user->name = $name;
+        $user->email = $email;
+        $user->password = password_hash($password, PASSWORD_BCRYPT);
+        $user->save();
+        Auth::login($user);
+
+
         $company = new Companies();
-        $company->name = $name;
-        $company->email = $email;
         $company->lat = $lat;
         $company->lng = $lng;
         $company->slug = str_slug($name);
-        $company->password = password_hash($password, PASSWORD_BCRYPT);
-        $company->save();
-        Session::put('company', $company);
+
+        $user->company()->save($company);
         return redirect('/')->withMessage('Success');
     }
 }

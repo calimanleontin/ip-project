@@ -31,4 +31,12 @@ class User extends Authenticatable
     {
         return $this->role == 'admin';
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function company()
+    {
+        return $this->hasOne('App\Companies');
+    }
 }
