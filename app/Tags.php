@@ -15,6 +15,6 @@ class Tags extends Model
      */
     public function companies()
     {
-        return $this->belongsToMany('App/Companies');
+        return $this->belongsToMany('App\Companies');
     }
 }
