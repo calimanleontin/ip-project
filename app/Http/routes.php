@@ -39,5 +39,9 @@ Route::group(['middleware' => ['web']], function () {
     Route::post('/company/register', 'CompanyController@postRegister');
     Route::post('/company/login', 'CompanyController@postLogin');
 
+    Route::get('/api/tags', 'TagController@index');
+    Route::post('/api/tags/save', 'TagController@store');
+    Route::get('/api/tags/delete/{id}', 'TagController@delete');
+
 
 });

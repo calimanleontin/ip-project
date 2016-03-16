@@ -16,7 +16,7 @@ angular.module('tagService', [])
             },
 
             destroy : function(id) {
-                return $http.delete('/api/tags/' + id);
+                return $http.delete('/api/tags/delete/' + id);
             }
         }
     });
