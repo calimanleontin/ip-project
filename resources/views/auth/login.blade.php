@@ -1,6 +1,6 @@
 @extends('app')
 @section('title')
-    Login
+    User Login
 @endsection
 @section('content')
     <form method="POST" action="/auth/login" class="form-horizontal">

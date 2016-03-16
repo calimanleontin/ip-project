@@ -77,13 +77,10 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->name }} <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
-                            @if(!Auth::guest() and Auth::user()->company == null)
+                            @if(!Auth::guest() and Auth::user()->is_company() == false)
                                 <li>
                                     <a href="{{ url('/profile/user/'.Auth::id()) }}">My Profile</a>
                                 </li>
-                            <li>
-                                <a href="{{ url('/auth/logout') }}">Logout</a>
-                            </li>
                             @endif
 
                         @if(!Auth::guest() and Auth::user()->is_admin())
@@ -94,9 +91,12 @@
 
                         @if(!Auth::guest() and Auth::user()->is_company())
                             <li>
-                                <a href="{{ url('/edit-company') }}">Edit Company</a>
+                                <a href="{{ url('/company/edit') }}">Edit Company</a>
                             </li>
                         @endif
+                                <li>
+                                    <a href="{{ url('/auth/logout') }}">Logout</a>
+                                </li>
                         </ul>
                     </li>
                 @endif

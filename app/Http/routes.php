@@ -38,6 +38,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/company/login', 'CompanyController@getLogin');
     Route::post('/company/register', 'CompanyController@postRegister');
     Route::post('/company/login', 'CompanyController@postLogin');
+    Route::get('/company/edit', 'CompanyController@edit');
 
     Route::get('/create-tag', 'TagController@create');
     Route::post('/store-tag', 'TagController@store');
