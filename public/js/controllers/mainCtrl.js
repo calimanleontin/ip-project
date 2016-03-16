@@ -13,10 +13,10 @@ angular.module('mainCtrl', [])
             });
 
 
-        $scope.submitTag = function(){
+        $scope.submitTag = function(tagId, companyId){
             $scope.loading = true;
 
-            Tag.save($scope.tagData)
+            Tag.save(tagID, companyId)
                 .success(function(data){
                     Tag.get()
                         .success(function(getData){
