@@ -21,7 +21,7 @@ angular.module('mainCtrl', [])
         $scope.submitTag = function(tagId, companyId){
             $scope.loading = true;
 
-            Tag.save(tagId, companyId)
+            Tag.assign(tagId, companyId)
                 .success(function(data){
                     Tag.get()
                         .success(function(getData){

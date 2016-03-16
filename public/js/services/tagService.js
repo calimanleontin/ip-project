@@ -6,7 +6,7 @@ angular.module('tagService', [])
                 return $http.get('/api/tags/' + id);
             },
 
-            save : function(tagId,companyId){
+            assign : function(tagId,companyId){
                 return $http.get('/api/tags/assign/' + tagId + '/' + companyId)
             },
 
