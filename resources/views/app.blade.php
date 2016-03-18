@@ -42,9 +42,9 @@
 
         {{--ANGULAR--}}
 
-    <script src="js/controllers/mainCtrl.js"></script> <!-- load our controller -->
-    <script src="js/services/tagService.js"></script> <!-- load our service -->
-    <script src="js/app.js"></script> <!-- load our application -->
+    <script src="/js/controllers/mainCtrl.js"></script> <!-- load our controller -->
+    <script src="/js/services/tagService.js"></script> <!-- load our service -->
+    <script src="/js/app.js"></script> <!-- load our application -->
 <body ng-app="app" ng-controller="mainController">
 <nav class="navbar navbar-default">
     <div class="container-fluid">

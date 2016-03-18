@@ -78,6 +78,13 @@ class UserController extends Controller
         $password = Input::get('password');
 
         if (password_verify($password, $user->password)) {
+
+            if($user->is_company())
+            {
+                return redirect('/auth/login')
+                    ->withErrors('You are not registered as an user');
+            }
+
             Auth::login($user);
             return redirect('/')
                 ->withMessage('Login successfully');

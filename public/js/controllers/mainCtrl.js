@@ -17,16 +17,20 @@ angular.module('mainCtrl', [])
                 $scope.loading = false;
             });
 
-
         $scope.submitTag = function(tagId, companyId){
             $scope.loading = true;
 
             Tag.assign(tagId, companyId)
                 .success(function(data){
-                    Tag.get()
+                    Tag.get(id)
                         .success(function(getData){
-                            $scope.tags = getData;
-                            $scope.loading = false;
+                            if(getData == '')
+                                $scope.loading = false;
+                            else
+                            {
+                                $scope.tags = getData;
+                                $scope.loading = false;
+                            }
                         });
                 });
         };
@@ -34,12 +38,17 @@ angular.module('mainCtrl', [])
         $scope.deleteTag = function(tagId, companyId){
             $scope.loading = true;
 
-            Tag.destroy(datId, companyId)
+            Tag.destroy(tagId, companyId)
                 .success(function(data){
-                    Tag.get()
+                    Tag.get(id)
                         .success(function(getData){
-                            $scope.tags = getData;
-                            $scope.loading = false;
+                            if(getData == '')
+                                $scope.loading = false;
+                            else
+                            {
+                                $scope.tags = getData;
+                                $scope.loading = false;
+                            }
                         });
                 });
         };

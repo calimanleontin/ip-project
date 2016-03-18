@@ -1,6 +1,6 @@
 @extends('app')
 @section('title')
-    Login
+    Register
 @endsection
 @section('content')
     <form method="POST" action="/auth/register" class="form-horizontal">

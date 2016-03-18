@@ -42,6 +42,8 @@ class User extends Authenticatable
 
     public function is_company()
     {
-        return $this->company() != null ;
+        return $this->company()->first() != null ;
+
     }
+
 }

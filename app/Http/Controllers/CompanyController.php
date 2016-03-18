@@ -89,8 +89,8 @@ class CompanyController extends Controller
 
         if (password_verify($password, $user->password)) {
 
-            if(!$user->is_company())
-                return redirect('/auth/login')
+            if($user->is_company() == false)
+                return redirect('/company/login')
                     ->withErrors('You do not have a company');
             Auth::login($user);
             return redirect('/')

@@ -3,7 +3,10 @@ angular.module('tagService', [])
     .factory('Tag', function ($http){
         return {
             get : function(id){
-                return $http.get('/api/tags/' + id);
+                if(id == '')
+                    return '';
+                else
+                    return $http.get('/api/tags/' + id);
             },
 
             assign : function(tagId,companyId){
