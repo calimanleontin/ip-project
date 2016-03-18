@@ -17,9 +17,10 @@ class TagController extends Controller
      * @param $id
      * @return mixed
      */
-    public function index($id)
+    public function index()
     {
-        $company = Companies::find($id);
+        $user = Auth::user();
+        $company = Companies::find($user->company->id);
         if($company == null)
             return Response::json(array('success' => false, 'reason' => 'Company does not exist', 'error' => '404'));
         return Response::json($company->tags);
@@ -30,15 +31,21 @@ class TagController extends Controller
      * @param $companyId
      * @return mixed
      */
-    public function assign($tagId, $companyId)
+    public function assign(Request $request)
     {
-        $company = Companies::find($companyId);
+        $tagId = Input::all();
+        $user = Auth::user();
+        $company = Companies::find($user->company->id);
         if($company == null)
             return Response::json(array('success' => false, 'reason' => 'company do not exit'));
 
         $tag = Tags::find($tagId);
         if($tag == null)
             return Response::json(array('success' => false, 'reason' => 'tag do not exit'));
+
+        $tags = $company->tags;
+         if(in_array($tag, $tags->all()))
+             return Response::json(array('success' => false, 'reason' => 'element already in array'));
 
         $company->tags()->attach($tagId);
         return Response::json(array('success' => true));
@@ -51,9 +58,10 @@ class TagController extends Controller
      * @param $companyId
      * @return mixed
      */
-    public function delete($tagId, $companyId)
+    public function delete($tagId)
     {
-        $company = Companies::find($companyId);
+        $user = Auth::user();
+        $company = Companies::find($user->company->id);
         if($company == null)
             return Response::json(array('success' => false, 'reason' => 'company do not exit'));
 

@@ -2,19 +2,22 @@ angular.module('tagService', [])
 
     .factory('Tag', function ($http){
         return {
-            get : function(id){
-                if(id == '')
-                    return '';
-                else
-                    return $http.get('/api/tags/' + id);
+            get : function(){
+                return $http.get('/api/tags/');
             },
 
-            assign : function(tagId,companyId){
-                return $http.get('/api/tags/assign/' + tagId + '/' + companyId)
+            assign : function(tagData){
+                return $http({
+                    method  :   'POST',
+                    url     :   '/api/tags/assign',
+                    data    : $.param(tagData),
+                    headers : {'Content-Type' : 'application/x-www-form-urlencoded'}
+
+                });
             },
 
-            destroy : function(tagId, companyId) {
-                return $http.delete('/api/tags/delete/' + tagId + '/' + companyId);
+            destroy : function(tagId) {
+                return $http.get('/api/tags/delete/' + tagId );
             }
         }
     });

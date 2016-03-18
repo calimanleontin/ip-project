@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Companies;
+use App\Tags;
 use App\User;
 use \Auth;
 use Illuminate\Http\Request;
@@ -111,9 +112,11 @@ class CompanyController extends Controller
             if($user->is_company())
             {
                 $company = $user->company;
+                $tags = Tags::all();
                 return view('company.edit')
                     ->withUser($user)
-                    ->withCompany($company);
+                    ->withCompany($company)
+                    ->withTags($tags);
             }
             else
                 return redirect('/')->withErrors('Error');
