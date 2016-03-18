@@ -20,6 +20,12 @@
                 {!! Form::text('name', $user->name, array('class' => 'form-control', 'required', 'placeholder' => 'Name')) !!}
             </div>
 
+            @if(!empty($company->image))
+                <div class="img-rounded col-md-7">
+                    <img src="/images/companies/{{ $company->image }}"  class="img-company">
+                </div>
+            @endif
+
             <div class="form-group col-md-7">
                 {!! Form::label('image', 'Upload avatar:') !!}
                 {!! Form::file('image', null) !!}
