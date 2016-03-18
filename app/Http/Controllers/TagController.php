@@ -49,8 +49,6 @@ class TagController extends Controller
 
         $company->tags()->attach($tagId);
         return Response::json(array('success' => true));
-
-
     }
 
     /**

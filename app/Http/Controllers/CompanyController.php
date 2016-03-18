@@ -51,15 +51,21 @@ class CompanyController extends Controller
         $confirm = Input::get('confirm');
         $duplicate = User::where('name', $name)->first();
         if($duplicate != null)
+        {
             return redirect('/company/register')
                 ->withErrors('Name already in use');
+        }
         $duplicate = User::where('email', $email)->first();
         if($duplicate != null)
+        {
             return redirect('/company/register')
                 ->withErrors('Email already in use');
+        }
         if($password != $confirm)
+        {
             return redirect('/company/register')
                 ->withErrors('Passwords did not match');
+        }
 
         $user = new User();
         $user->name = $name;
@@ -67,7 +73,6 @@ class CompanyController extends Controller
         $user->password = password_hash($password, PASSWORD_BCRYPT);
         $user->save();
         Auth::login($user);
-
 
         $company = new Companies();
         $company->name = $name;
@@ -79,21 +84,28 @@ class CompanyController extends Controller
         return redirect('/')->withMessage('Success');
     }
 
+    /**
+     * @return $this
+     */
     public function postLogin()
     {
         $email = Input::get('email');
         $user = User::where('email', $email)->first();
         if ($user == null)
+        {
             return redirect('/auth/register')
                 ->withErrors('E-mail not found');
+        }
 
         $password = Input::get('password');
 
         if (password_verify($password, $user->password)) {
 
             if($user->is_company() == false)
+            {
                 return redirect('/company/login')
                     ->withErrors('You do not have a company');
+            }
             Auth::login($user);
             return redirect('/')
                 ->withMessage('Login successfully');
@@ -104,6 +116,9 @@ class CompanyController extends Controller
         }
     }
 
+    /**
+     * @return $this
+     */
     public function edit()
     {
         if(!Auth::guest() and Auth::user()->is_company())
@@ -119,9 +134,40 @@ class CompanyController extends Controller
                     ->withTags($tags);
             }
             else
+            {
                 return redirect('/')->withErrors('Error');
+            }
         }
         else
+        {
             return redirect('/')->withErrors('Error');
+        }
     }
+
+    public function update()
+    {
+        $user = Auth::user();
+        if($user == null or $user->is_company() == false)
+        {
+            return redirect('/company/login')
+                ->withErrors('You have not sufficient permissions');
+        }
+        $name = Input::get('name');
+        $description = Input::get('description');
+        $lat = Input::get('lat');
+        $lng = Input::get('lng');
+        $company = $user->company;
+
+        $company->name = $name;
+        $company->description = $description;
+        $company->lat = $lat;
+        $company->lng = $lng;
+
+        $company->save();
+        $user->company()->save($company);
+
+        return redirect('/company/edit')
+            ->withMessage('Success');
+    }
+
 }
