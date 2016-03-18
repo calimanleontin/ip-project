@@ -20,6 +20,11 @@
                 {!! Form::text('name', $user->name, array('class' => 'form-control', 'required', 'placeholder' => 'Name')) !!}
             </div>
 
+            <div class="form-group col-md-7">
+                {!! Form::label('image', 'Upload avatar:') !!}
+                {!! Form::file('image', null) !!}
+            </div>
+
             <div class="form-group col-md-10">
                 <label for="description">Description:</label>
                 <textarea name = 'description' class="form-control">{!! $company->description !!}</textarea>
@@ -84,7 +89,7 @@
             {!! Form::close() !!}
 
                 <form ng-submit="submitTag()">
-                    <div class="col-md-4">
+                    <div class="col-md-7">
                         <label for="tags">Tags:</label>
                         <select class="form-control" ng-model="tagData.tag">
                             @foreach($tags as $tag)

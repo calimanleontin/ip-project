@@ -24,6 +24,7 @@ class Company extends Migration
             $table->string('slug')->unique();
             $table->string('lat');
             $table->string('lng');
+            $table->string('image');
             $table->timestamps();
         });
     }

@@ -163,6 +163,14 @@ class CompanyController extends Controller
         $company->lat = $lat;
         $company->lng = $lng;
 
+        if(Input::file('image') != null) {
+            $destinationPath = 'images/companies'; // upload path
+            $extension = Input::file('image')->getClientOriginalName(); // getting image name
+            $fileName = time() . '.' . $extension; // renameing image
+            $company->image = $fileName;
+            Input::file('image')->move($destinationPath, $fileName); // uploading file to given path
+        }
+
         $company->save();
         $user->company()->save($company);
 
