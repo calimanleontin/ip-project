@@ -14,6 +14,7 @@ class Company extends Migration
     {
         Schema::create('companies', function(Blueprint $table){
             $table->increments('id');
+            $table->string('name');
             $table->text('description');
             $table->integer('user_id')->unsigned()->default(0);
             $table->foreign('user_id')

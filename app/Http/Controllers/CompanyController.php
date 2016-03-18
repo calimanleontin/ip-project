@@ -69,6 +69,7 @@ class CompanyController extends Controller
 
 
         $company = new Companies();
+        $company->name = $name;
         $company->lat = $lat;
         $company->lng = $lng;
         $company->slug = str_slug($name);
