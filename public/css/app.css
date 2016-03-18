@@ -21,6 +21,15 @@ p.response-btn:hover
 .submit-management-down{
     margin-top:24px;
 }
+.left{
+    margin-left:24px;
+}
+
+.left{
+
+    margin-left:0px;
+    float:left;
+}
 body {
     margin: 0;
 }

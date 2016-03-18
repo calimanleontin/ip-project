@@ -1,3 +1,4 @@
+
 var map = new google.maps.Map(document.getElementById('map-canvas'),{
     center:{
         lat: 44.42,
@@ -42,4 +43,3 @@ google.maps.event.addListener(marker,'position_changed',function(){
     $('#lng').val(lng);
 
 });
-
