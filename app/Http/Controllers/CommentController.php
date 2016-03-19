@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Comments;
 use App\User;
+use App\Companies;
 use Illuminate\Http\Request;
 use \Auth;
 use \Response;
@@ -14,18 +15,13 @@ use App\Http\Requests;
 class CommentController extends Controller
 {
     /**
-     * @param $id
+     * @param $slug
      * @return $this
      */
-    public function show($id)
+    public function show($slug)
     {
-        $user = User::find($id);
-        if($user == null or $user->is_company() == false)
-            return Response::json(['success' => 'false', 'reason' => 'No company']);
-
-        $company = $user->company;
-        $comments = $company->comments;
-
+        $company = Companies::where('slug', $slug)->first();
+        $comments = Comments::where('companies_id', $company->id)->with('user')->with('companies')->get();
         return Response::json($comments);
     }
 

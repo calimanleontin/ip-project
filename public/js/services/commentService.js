@@ -3,8 +3,8 @@ angular.module('commentService', [])
     .factory('Comment', function ($http){
         return {
 
-            get : function(company_id){
-                return $http.get('/api/comments/' + company_id);
+            get : function(company_slug){
+                return $http.get('/api/comments/' + company_slug    );
             },
 
             save : function(commentData, company_id){

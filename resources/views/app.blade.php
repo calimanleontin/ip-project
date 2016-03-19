@@ -39,10 +39,11 @@
     <!-- JS -->
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.8/angular.min.js"></script> <!-- load angular -->
 
-        {{--ANGULAR--}}
+    {{--ANGULAR--}}
 
     <script src="/js/controllers/mainCtrl.js"></script> <!-- load our controller -->
-    <script src="/js/services/tagService.js"></script> <!-- load our service -->
+    <script src="/js/services/tagService.js"></script> <!-- load our tag service -->
+    <script src="/js/services/commentService.js"></script> <!-- load our comment service -->
     <script src="/js/app.js"></script> <!-- load our application -->
 <body ng-app="app" ng-controller="mainController">
 <nav class="navbar navbar-default">

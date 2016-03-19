@@ -33,47 +33,43 @@
                     </div>
 
                     <div class="list-group-item">
-                        {!! Form::open(['url'=> '/comment-save']) !!}
+                        <form class='form-group' ng-submit = 'submitComment({{ $company->id }})'>
 
                         <div class="form-group">
-                            <textarea class="form-control" name="content" placeholder="Type..."></textarea>
+                            <textarea class="form-control" name="content" ng-model="commentData.content" placeholder="Type..."></textarea>
                         </div>
 
                         <div class="form-group">
                             <input type="submit" class="btn btn-default" value="Submit">
                         </div>
 
-                        {!! Form::close() !!}
+                        </form>
                     </div>
                 </div>
             </div>
         @endif
 
-
-                <div class="panel-body">
+        <div class="panel-body">
             <div class="list-group">
                 <div class="list-group-item">
                     <h3>Comments:</h3>
                 </div>
             </div>
 
-
-            @if(!empty($company->comments))
-                @foreach($companies as $company)
-                    <div class="list-group">
-                        <div class="list-group-item">
-                            By <small>{{ $comment->user->name }}</small> on {{ $comments->created_at }}
-                        </div>
-                        <div class="list-group-item">
-                            {!! $comment->content !!}
-                        </div>
+            <div class="" ng-hide="loading" ng-repeat="comment in comments">
+                <div class="list-group">
+                    <div class="list-group-item">
+                        By <small>@{{comment.user.name}}</small> on @{{ comment.created_at }}
                     </div>
-                @endforeach
-                @else
-                <div class="list-group-item">
-                    Sorry, no comments.
+                    <div class="list-group-item">
+                        @{{ comment.content }}
+                    </div>
+                    <div class="list-group-item">
+                        <a href="" ng-click="deleteComment(comment.id)" class="text-muted">DeleteComment</a>
+                    </div>
                 </div>
-            @endif
+            </div>
         </div>
+
     </div>
 @endsection

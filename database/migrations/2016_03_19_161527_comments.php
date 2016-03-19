@@ -19,8 +19,8 @@ class Comments extends Migration
                 ->references('id')
                 ->on('users')
                 ->onDelete('cascade');
-            $table->integer('company_id')->unsigned()->default(0);
-            $table->foreign('company_id')
+            $table->integer('companies_id')->unsigned()->default(0);
+            $table->foreign('companies_id')
                 ->references('id')
                 ->on('companies')
                 ->onDelete('cascade');
