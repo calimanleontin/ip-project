@@ -40,10 +40,21 @@ class User extends Authenticatable
         return $this->hasOne('App\Companies');
     }
 
+    /**
+     * @return bool
+     */
     public function is_company()
     {
         return $this->company()->first() != null ;
 
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function comments()
+    {
+        return $this->hasMany('App\Comments');
     }
 
 }

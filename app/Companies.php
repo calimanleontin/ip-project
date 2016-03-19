@@ -25,4 +25,12 @@ class Companies extends Model
     {
         return $this->hasOne('App\User');
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function comments()
+    {
+        return $this->hasMany('App\Comments');
+    }
 }
