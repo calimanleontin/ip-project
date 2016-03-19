@@ -4,6 +4,9 @@
     {{ $company->name }}
 @endsection
 
+<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+<script>tinymce.init({ selector:'textarea' });</script>
+
 @section('content')
     <div class="">
         <div class="panel-body">
@@ -22,7 +25,32 @@
             </div>
         </div>
 
-        <div class="panel-body">
+        @if(!Auth::guest() and Auth::user()->is_company() == true)
+            <div class="panel-body">
+                <div class="list-group">
+                    <div class="list-group-item">
+                        <h3>Add a comment:</h3>
+                    </div>
+
+                    <div class="list-group-item">
+                        {!! Form::open(['url'=> '/comment-save']) !!}
+
+                        <div class="form-group">
+                            <textarea class="form-control" name="content" placeholder="Type..."></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-default" value="Submit">
+                        </div>
+
+                        {!! Form::close() !!}
+                    </div>
+                </div>
+            </div>
+        @endif
+
+
+                <div class="panel-body">
             <div class="list-group">
                 <div class="list-group-item">
                     <h3>Comments:</h3>
