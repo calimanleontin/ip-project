@@ -1,6 +1,6 @@
 angular.module('mainCtrl', [])
 
-    .controller('mainController', function($http, $scope, Tag){
+    .controller('mainController', function($http, $scope, Tag, Comment){
 
         $scope.tagData = {};
 
