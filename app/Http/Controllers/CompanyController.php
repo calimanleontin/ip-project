@@ -6,6 +6,7 @@ use App\Companies;
 use App\Tags;
 use App\User;
 use \Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use \Session;
@@ -144,6 +145,9 @@ class CompanyController extends Controller
         }
     }
 
+    /**
+     * @return $this
+     */
     public function update()
     {
         $user = Auth::user();
@@ -166,7 +170,7 @@ class CompanyController extends Controller
         if(Input::file('image') != null) {
             $destinationPath = 'images/companies'; // upload path
             $extension = Input::file('image')->getClientOriginalName(); // getting image name
-            $fileName = time() . '.' . $extension; // renameing image
+            $fileName = time() . '.' . $extension; // renaming image
             $company->image = $fileName;
             Input::file('image')->move($destinationPath, $fileName); // uploading file to given path
         }
@@ -176,6 +180,17 @@ class CompanyController extends Controller
 
         return redirect('/company/edit')
             ->withMessage('Success');
+    }
+
+    public function show($slug)
+    {
+        $company = Companies::where('slug', $slug)->first();
+        if($company == null)
+            return redirect('/')
+                ->withErrors('No company with that name');
+
+        return view('company.show')
+            ->withCompany($company);
     }
 
 }
