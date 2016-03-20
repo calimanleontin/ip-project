@@ -48,4 +48,17 @@ angular.module('mainCtrl', [])
                         });
                 });
         };
+
+        $scope.submitComment = function(companyId){
+            $scope.loading = true;
+
+            Comment.save($scope.commentData, companyId)
+                .success(function(data){
+                    Comment.get(company_slug)
+                        .success(function(getData){
+                            $scope.comments = getData;
+                            $scope.loading = false;
+                        });
+                });
+        };
     });

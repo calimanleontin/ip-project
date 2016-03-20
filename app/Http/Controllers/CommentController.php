@@ -21,7 +21,7 @@ class CommentController extends Controller
     public function show($slug)
     {
         $company = Companies::where('slug', $slug)->first();
-        $comments = Comments::where('companies_id', $company->id)->with('user')->with('companies')->get();
+        $comments = Comments::where('companies_id', $company->id)->with('user')->with('company')->get();
         return Response::json($comments);
     }
 
@@ -33,12 +33,12 @@ class CommentController extends Controller
     {
         $user = Auth::user();
         if($user == null)
-            return Response::json(['success' => 'false', 'reason' => 'No user logged']);
+            return Response::json(['success' => 'false', 'reason' => 'No logged user']);
 
         $content = Input::get('content');
         $comment = new Comments();
         $comment->user_id = $user->id;
-        $comment->company_id = $company_id;
+        $comment->companies_id = $company_id;
         $comment->content = $content;
         $comment->save();
 

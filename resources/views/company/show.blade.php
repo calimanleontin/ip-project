@@ -4,9 +4,6 @@
     {{ $company->name }}
 @endsection
 
-<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
-<script>tinymce.init({ selector:'textarea' });</script>
-
 @section('content')
     <div class="">
         <div class="panel-body">
@@ -33,15 +30,15 @@
                     </div>
 
                     <div class="list-group-item">
-                        <form class='form-group' ng-submit = 'submitComment({{ $company->id }})'>
+                        <form class='form-group' ng-submit = 'submitComment("{{ $company->id }}")'>
 
-                        <div class="form-group">
-                            <textarea class="form-control" name="content" ng-model="commentData.content" placeholder="Type..."></textarea>
-                        </div>
+                            <div class="form-group">
+                                <textarea class="form-control" name="content" ng-model="commentData.content" placeholder="Type..."></textarea>
+                            </div>
 
-                        <div class="form-group">
-                            <input type="submit" class="btn btn-default" value="Submit">
-                        </div>
+                            <div class="form-group">
+                                <input type="submit" class="btn btn-default" value="Submit">
+                            </div>
 
                         </form>
                     </div>
