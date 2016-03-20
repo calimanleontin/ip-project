@@ -3,24 +3,23 @@
     @if(!empty($title))
         {{$title}}
     @else
-        Sorry.
+        My location
     @endif
 @endsection
 @section('content')
     <div class="">
-        @if(!empty($items))
-            @foreach( $items as $item )
-                <div class="list-group">
-                    <div class="list-group-item">
-                        ceva
-                    </div>
-                    <div class="list-group-item">
-                        altceva
-                    </div>
-                </div>
-            @endforeach
-        @else
-            No articles or anything.
-        @endif
+            <a href="#" id="showMyLocation">Where Am I</a>
+        <script>
+            $(function () {
+                $("#showMyLocation").click(function () {
+                    navigator.geolocation.getCurrentPosition(function (position) {
+                        var latLng   = new google.maps.LatLng(
+                                position.coords.latitude, position.coords.longitude);
+                        alert(latLng);
+                    });
+                    return false;
+                });
+            });
+        </script>
     </div>
 @endsection

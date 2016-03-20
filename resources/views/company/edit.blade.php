@@ -73,6 +73,13 @@
                 <input type="text" class="form-control input-sm" value = "{{ $company->lng }}" name="lng" id="lng" required>
             </div>
 
+
+            <div class="col-md-2 submit-management-down submit-management-left">
+                {!! Form::submit('Submit', ['class'=>'form-control btn btn-default']) !!}
+            </div>
+
+            {!! Form::close() !!}
+
             <div class="col-md-9">
                 <h4>
                     Actual tags:
@@ -86,13 +93,8 @@
                 </ul>
             </div>
 
-            <div class="col-md-2 submit-management-down submit-management-left">
-                {!! Form::submit('Submit', ['class'=>'form-control btn btn-default']) !!}
-            </div>
 
-            {!! Form::close() !!}
-
-                <form ng-submit="submitTag()">
+            <form ng-submit="submitTag()">
                     <div class="col-md-7">
                         <label for="tags">Tags:</label>
                         <select class="form-control" ng-model="tagData.tag">

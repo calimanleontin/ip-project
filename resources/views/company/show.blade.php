@@ -56,7 +56,7 @@
             <div class="" ng-hide="loading" ng-repeat="comment in comments">
                 <div class="list-group">
                     <div class="list-group-item">
-                        By <small>@{{comment.user.name}}</small> on @{{ comment.created_at }}
+                        By <strong>@{{comment.user.name}}</strong> on @{{ comment.created_at }}
                     </div>
                     <div class="list-group-item">
                         @{{ comment.content }}
