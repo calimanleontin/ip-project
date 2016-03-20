@@ -61,4 +61,17 @@ angular.module('mainCtrl', [])
                         });
                 });
         };
+
+        $scope.deleteComment = function(commentId){
+            $scope.loading = true;
+
+            Comment.destroy(commentId)
+                .success(function(data){
+                    Comment.get(company_slug)
+                        .success(function(getData){
+                            $scope.comments = getData;
+                            $scope.loading = false;
+                        });
+                });
+        };
     });

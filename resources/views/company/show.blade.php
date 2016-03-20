@@ -22,7 +22,7 @@
             </div>
         </div>
 
-        @if(!Auth::guest() and Auth::user()->is_company() == true)
+        @if(!Auth::guest() and Auth::user()->is_company() == false)
             <div class="panel-body">
                 <div class="list-group">
                     <div class="list-group-item">
@@ -61,9 +61,11 @@
                     <div class="list-group-item">
                         @{{ comment.content }}
                     </div>
-                    <div class="list-group-item">
-                        <a href="" ng-click="deleteComment(comment.id)" class="text-muted">DeleteComment</a>
-                    </div>
+                    @if(!Auth::guest() and Auth::user()->is_admin())
+                        <div class="list-group-item">
+                            <a href="" ng-click="deleteComment(comment.id)" class="text-muted">DeleteComment</a>
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>

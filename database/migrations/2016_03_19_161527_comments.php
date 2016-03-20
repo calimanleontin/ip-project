@@ -13,7 +13,7 @@ class Comments extends Migration
     public function up()
     {
         Schema::create('comments', function(Blueprint $table){
-            $table->integer('id');
+            $table->increments('id');
             $table->integer('user_id')->unsigned()->default(0);
             $table->foreign('user_id')
                 ->references('id')
