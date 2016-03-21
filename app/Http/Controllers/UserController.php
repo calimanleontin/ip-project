@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
+use \Response;
 use Illuminate\Support\Facades\Input;
 use \Auth;
 

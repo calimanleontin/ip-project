@@ -42,8 +42,8 @@ Route::group(['middleware' => ['web']], function () {
     Route::post('/company/update', 'CompanyController@update');
     Route::get('/company/{slug}', 'CompanyController@show');
 
-    Route::get('/api/comments/{slug}', 'CommentController@show');
-    Route::post('/api/comments/save/{id}', 'CommentController@store');
+    Route::get('/api.comments/{slug}', 'CommentController@show');
+    Route::post('/api/comments/save/{id}', 'CommentController@save');
     Route::get('/api/comments/delete/{id}', 'CommentController@delete');
 
     Route::get('/create-tag', 'TagController@create');

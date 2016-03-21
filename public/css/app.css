@@ -8,9 +8,88 @@ p.response-btn
 {
     color: #2e6da4;
 }
-#map-canvas{
-    width: 600px;
+#map-canvas {
+    height:600px;
+    width:600px;
+}
+#overlay {
+    position: absolute;
+    width: 200px;
+    height: 450px;
+    background: black;
+    opacity: .8;
+    top: 0;
+    left: 0;
+    overflow: auto;
+}
+#overlayContent {
+    color: white;
+    padding: 10px 20px;
+}
+#overlayContent p {
+    font-size: 12px;
+    margin: 6px 0;
+}
+#overlayContent small {
+    display: block;
+    text-align: right;
+    font-style: italic;
+}
+small {
+    font-size: 9px;
+}
+i {
+    color: lightblue;
+}
+h1 {
+    font-size: 20px;
+}
+h5 {
+    font-size: 12px;
+}
+button {
+    margin: 20px 0 0 20px;
+}
+#overlay {
+    margin-top:120px;
+    margin-left:30px;
+    position: absolute;
+    width: 200px;
     height: 600px;
+    background: black;
+    opacity: .8;
+    top: 0;
+    left: 0;
+    overflow: auto;
+}
+
+#overlayContent {
+    color: white;
+    padding: 10px 20px;
+}
+#overlayContent p {
+    font-size: 12px;
+    margin: 6px 0;
+}
+#overlayContent small {
+    display: block;
+    text-align: right;
+    font-style: italic;
+}
+small {
+    font-size: 9px;
+}
+i {
+    color: lightblue;
+}
+h1 {
+    font-size: 20px;
+}
+h5 {
+    font-size: 12px;
+}
+button {
+    margin: 20px 0 0 20px;
 }
 p.response-btn:hover
 {
@@ -21,12 +100,7 @@ p.response-btn:hover
 .submit-management-down{
     margin-top:24px;
 }
-.img-company{
-    width:400px;
-    height:400px;
-    max-width:400px;
-    max-height:400px;
-}
+
 .left{
     margin-left:24px;
 }

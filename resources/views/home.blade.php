@@ -8,9 +8,18 @@
 @endsection
 
 @section('content')
-    <script src="/js/myLocation.js"></script>
 
     <div class="">
-            <a href="#" id="showMyLocation">Where Am I</a>
+        <button id="calcRoute">Calc route</button>
+
+        <div id="map-canvas"></div>
+        <div id="overlay">
+            <div id="overlayContent">
+
+
+            </div>
+        </div>
+    <script src="/js/myLocation.js"></script>
     </div>
+
 @endsection
