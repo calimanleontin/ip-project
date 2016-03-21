@@ -64,7 +64,7 @@ class CommentController extends Controller
         if($comment->user_id != $user->id and $user->is_admin() == false)
             return Response::json(['success' => 'false', 'reason' => 'Not enough permissions']);
 
-        $comment->destroy();
+        $comment->delete();
 
         return Response::json(['success' => true]);
     }
