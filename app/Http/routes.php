@@ -56,5 +56,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/api/tags/delete/{tagId}/', 'TagController@delete');
 
     Route::get('/api/company-location/{company}', 'CompanyController@getLocation');
+    Route::get('/api/grades/{company_slug}', 'GradeController@getGradeValue');
+    Route::get('/api/grades/{companyId}/{value}', 'GradeController@setGradeValue');
 
 });

@@ -24,6 +24,10 @@ angular.module('mainCtrl', [])
 
         if(secondVar == 'company' && company_slug in  routes == false )
         {
+            $http.get('/api/grades/' + company_slug)
+                .success(function(data){
+                    $scope.average = data['value'];
+                });
             Comment.get(company_slug)
                 .success(function(data){
                     $scope.comments = data;
@@ -81,5 +85,15 @@ angular.module('mainCtrl', [])
                             $scope.loading = false;
                         });
                 });
+        };
+
+        $scope.rateCompany = function(companyId, value){
+            $scope.loading = true;
+
+            $http.get('/api/grades/' + companyId + '/' + value)
+                .success(function(data){
+                    $scope.average = data['value'];
+                });
+            $scope.loading = false;
         };
     });
