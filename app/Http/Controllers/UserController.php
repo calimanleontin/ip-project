@@ -25,7 +25,11 @@ class UserController extends Controller
      */
     public function getLogin()
     {
-        return view('auth.login');
+        if(Auth::check() == false)
+            return view('auth.login');
+        else
+            return redirect('/')
+                ->withErrors('You are already logged in');
     }
 
     /**
@@ -33,7 +37,11 @@ class UserController extends Controller
      */
     public function getRegister()
     {
-        return view('auth.register');
+        if(Auth::check() == false)
+            return view('auth.register');
+        else
+            return redirect('/')
+                ->withErrors('You are already logged in');
     }
 
     /**
@@ -41,6 +49,9 @@ class UserController extends Controller
      */
     public function postRegister()
     {
+        if(Auth::check() == true)
+            return redirect('/')
+                ->withErrors('You are already logged in');
         $name = Input::get('username');
         $duplicate = User::where('name', $name)->first();
         if ($duplicate != null)
@@ -70,6 +81,9 @@ class UserController extends Controller
 
     public function postLogin()
     {
+        if(Auth::check() == true)
+            return redirect('/')
+                ->withErrors('You are already logged in');
         $email = Input::get('email');
         $user = User::where('email', $email)->first();
         if ($user == null)
@@ -101,6 +115,9 @@ class UserController extends Controller
      */
     public function logout()
     {
+        if(Auth::check() == false)
+            return redirect('/')
+                ->withErrors('You are not logged in');
         Auth::logout();
         return redirect('/')
             ->withMessage('Logout successfully');

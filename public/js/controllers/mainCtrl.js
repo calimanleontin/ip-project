@@ -9,19 +9,28 @@ angular.module('mainCtrl', [])
         href = href.split('/');
         var number = href.length;
         var company_slug = (href[number-1]);
+        var secondVar = (href[number-2]);
 
         $scope.loading = true;
-        Tag.get()
-            .success(function(data){
-                $scope.tags = data;
-                $scope.loading = false;
-            });
+        if(company_slug == 'edit' && secondVar == 'company')
+        {
+            Tag.get()
+                .success(function(data){
+                    $scope.tags = data;
+                    $scope.loading = false;
+                });
+        }
+        var routes = ['login', 'register', 'update', 'edit'];
 
-        Comment.get(company_slug)
-            .success(function(data){
-            $scope.comments = data;
-            $scope.loading = false;
-        });
+        if(secondVar == 'company' && company_slug in  routes == true )
+        {
+            alert(company_slug in  routes);
+            Comment.get(company_slug)
+                .success(function(data){
+                    $scope.comments = data;
+                    $scope.loading = false;
+                });
+        }
 
         $scope.submitTag = function(){
             $scope.loading = true;

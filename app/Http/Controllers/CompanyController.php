@@ -20,6 +20,10 @@ class CompanyController extends Controller
      */
     public function account()
     {
+        if(Auth::check() == true)
+            return redirect('/')
+                ->withErrors('You are already logged in');
+
         return view('company.account');
     }
 
@@ -28,6 +32,10 @@ class CompanyController extends Controller
      */
     public function getRegister()
     {
+        if(Auth::check() == true)
+            return redirect('/')
+                ->withErrors('You are already logged in');
+
         return view('company.register');
     }
 
@@ -36,6 +44,10 @@ class CompanyController extends Controller
      */
     public function getLogin()
     {
+        if(Auth::check() == true)
+            return redirect('/')
+                ->withErrors('You are already logged in');
+
         return view('company.login');
     }
 
@@ -44,6 +56,10 @@ class CompanyController extends Controller
      */
     public function postRegister()
     {
+        if(Auth::check() == true)
+            return redirect('/')
+                ->withErrors('You are already logged in');
+
         $name = Input::get('name');
         $email = Input::get('email');
         $lat = Input::get('lat');
@@ -90,6 +106,10 @@ class CompanyController extends Controller
      */
     public function postLogin()
     {
+        if(Auth::check() == true)
+            return redirect('/')
+                ->withErrors('You are already logged in');
+
         $email = Input::get('email');
         $user = User::where('email', $email)->first();
         if ($user == null)
@@ -192,5 +212,5 @@ class CompanyController extends Controller
         return view('company.show')
             ->withCompany($company);
     }
-
 }
+
