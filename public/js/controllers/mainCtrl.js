@@ -27,6 +27,7 @@ angular.module('mainCtrl', [])
             $http.get('/api/grades/' + company_slug)
                 .success(function(data){
                     $scope.average = data['value'];
+                    $scope.myGrade = data['myValue'];
                 });
             Comment.get(company_slug)
                 .success(function(data){
@@ -93,6 +94,7 @@ angular.module('mainCtrl', [])
             $http.get('/api/grades/' + companyId + '/' + value)
                 .success(function(data){
                     $scope.average = data['value'];
+                    $scope.myGrade = data['myValue'];
                 });
             $scope.loading = false;
         };

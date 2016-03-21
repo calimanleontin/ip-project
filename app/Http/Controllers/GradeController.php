@@ -24,7 +24,9 @@ class GradeController extends Controller
             return Response::json(['status' => 404]);
         }
         $average = $this->average($company->id);
-        return Response::json(array('status' => 200, 'value' => $average));
+        $grade = Grades::where('company_id', $company->id)->where('user_id', Auth::user()->id)->first();
+        $gradeValue = $grade->value;
+        return Response::json(array('status' => 200, 'value' => $average, 'myValue' => $gradeValue));
     }
 
     /**
