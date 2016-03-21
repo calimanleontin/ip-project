@@ -20,7 +20,7 @@
 
             @if(!empty($company->image))
                 <div class="img-rounded col-md-7">
-                    <img src="/images/companies/{{ $company->image }}"  class="img-company">
+                    <img src="/images/companies/{{ $company->image }}"  class="company-image">
                 </div>
             @endif
 

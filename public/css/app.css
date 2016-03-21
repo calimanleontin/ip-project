@@ -39,6 +39,14 @@ p.response-btn
 small {
     font-size: 9px;
 }
+.company-image{
+    float:left;
+    margin:33px;
+    border-style: solid;
+    border-color:#aba8ff;
+    border-radius: 6px;
+    height: 280px;
+}
 i {
     color: lightblue;
 }

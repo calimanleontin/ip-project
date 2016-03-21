@@ -11,7 +11,7 @@
             <div class="list-group">
                 @if(!empty($company->image))
                     <div class="list-group-item">
-                        <img src="/images/companies/{{ $company->image }}"  class="img-company">
+                        <img src="/images/companies/{{ $company->image }}"  class="company-image">
                     </div>
                 @endif
             </div>
