@@ -41,6 +41,8 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/company/edit', 'CompanyController@edit');
     Route::post('/company/update', 'CompanyController@update');
     Route::get('/company/{slug}', 'CompanyController@show');
+    Route::get('/search', 'CompanyController@search');
+
 
     Route::get('/api/comments/{slug}', 'CommentController@show');
     Route::post('/api/comments/save/{id}', 'CommentController@save');
@@ -54,6 +56,5 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/api/tags/delete/{tagId}/', 'TagController@delete');
 
     Route::get('/api/company-location/{company}', 'CompanyController@getLocation');
-
 
 });

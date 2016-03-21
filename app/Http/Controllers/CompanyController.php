@@ -234,5 +234,39 @@ class CompanyController extends Controller
 
         return Response::json(['status' => 200, 'lat' => $lat, 'lng' => $lng]);
     }
+
+    /**
+     * @return $this
+     */
+    public function search()
+    {
+        $expression = Input::get('q');
+
+        $expression = explode(' ', $expression);
+
+        $companies = array();
+
+        foreach ($expression as $item) {
+            $matchedCompanies = Companies::where('name', 'like', '%' . $item . '%')->get();
+            foreach($matchedCompanies as $company)
+            {
+                if(!in_array($company, $companies))
+                    $companies[] = $company;
+            }
+        }
+        foreach ($expression as $item) {
+            $tags = Tags::where('name', 'like', '%' . $item . '%')->get();
+            foreach ($tags as $tag) {
+                $companiesFromTags = $tag->companies;
+                foreach($companiesFromTags as $company)
+                {
+                    if(!in_array($company, $companies))
+                        $companies[] = $company;
+                }
+            }
+            return view('home')
+                ->with('companies', $companies);
+        }
+    }
 }
 
