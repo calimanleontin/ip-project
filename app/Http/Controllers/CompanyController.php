@@ -202,6 +202,10 @@ class CompanyController extends Controller
             ->withMessage('Success');
     }
 
+    /**
+     * @param $slug
+     * @return $this
+     */
     public function show($slug)
     {
         $company = Companies::where('slug', $slug)->first();
@@ -211,6 +215,23 @@ class CompanyController extends Controller
 
         return view('company.show')
             ->withCompany($company);
+    }
+
+    /**
+     * @param $companyId
+     * @return mixed
+     */
+    public function getLocation($companyId)
+    {
+        $company = Companies::find($companyId);
+        if($company == null)
+            return Response::json(['status' => 404]);
+        $lat = $company->lat;
+        $lng = $company->lng;
+        if($lat == null or $lng == null)
+            return Response::json(['status' => 500]);
+
+        return Response::json(['status' => 200, 'lat' => $lat, 'lng' => $lng]);
     }
 }
 
