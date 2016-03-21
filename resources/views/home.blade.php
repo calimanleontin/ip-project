@@ -3,7 +3,7 @@
     @if(!empty($title))
         {{$title}}
     @else
-        My location
+        Companies
     @endif
 @endsection
 

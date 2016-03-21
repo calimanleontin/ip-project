@@ -58,10 +58,31 @@
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
+                <br>
+
                 <li>
-                    <a href="{{ url('/') }}">Home</a>
+                    <ul class="list list-inline">
+                        <li>
+                             <a href="{{ url('/') }}"><btn class="btn btn-default">Home</btn></a>
+                        </li>
+
+                        <li>
+                            <form class="form-inline" method='GET' action="/search">
+                                <ul class="list-inline">
+                                    <li>
+                                        <input type="text" class="form-control" name="q" placeholder="Type...">
+                                    </li>
+
+                                    <li>
+                                        <input type="submit" value="Search" class="btn btn-default">
+                                    </li>
+                                </ul>
+                            </form>
+                        </li>
+                    </ul>
                 </li>
             </ul>
+            <br>
             <ul class="nav navbar-nav navbar-right">
                 @if (Auth::guest())
                     <li>
