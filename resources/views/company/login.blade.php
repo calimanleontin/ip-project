@@ -1,9 +1,9 @@
 @extends('app')
 @section('title')
-    User Login
+    Company login
 @endsection
 @section('content')
-    <form method="POST" action="/auth/login" class="form-horizontal">
+    <form method="POST" action="/company/login" class="form-horizontal">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
         <div class="form-group">

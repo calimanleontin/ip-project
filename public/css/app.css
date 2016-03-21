@@ -8,6 +8,102 @@ p.response-btn
 {
     color: #2e6da4;
 }
+.star .hover{
+    content: "\e006";
+}
+
+#map-canvas {
+    height:570px;
+    width:570px;
+}
+
+#overlay {
+    position: absolute;
+    width: 200px;
+    height: 450px;
+    background: black;
+    opacity: .8;
+    top: 0;
+    left: 0;
+    overflow: auto;
+}
+#overlayContent {
+    color: white;
+    padding: 10px 20px;
+}
+#overlayContent p {
+    font-size: 12px;
+    margin: 6px 0;
+}
+#overlayContent small {
+    display: block;
+    text-align: right;
+    font-style: italic;
+}
+small {
+    font-size: 9px;
+}
+.company-image{
+    float:left;
+    margin:33px;
+    border-style: solid;
+    border-color:#aba8ff;
+    border-radius: 6px;
+    height: 280px;
+}
+i {
+    color: lightblue;
+}
+h1 {
+    font-size: 20px;
+}
+h5 {
+    font-size: 12px;
+}
+button {
+    margin: 20px 0 0 20px;
+}
+#overlay {
+    margin-top:42px;
+    margin-left:13px;
+    position: absolute;
+    width: 200px;
+    height: 570px;
+    background: black;
+    opacity: .8;
+    top: 0;
+    left: 0;
+    overflow: auto;
+}
+
+#overlayContent {
+    color: white;
+    padding: 10px 20px;
+}
+#overlayContent p {
+    font-size: 12px;
+    margin: 6px 0;
+}
+#overlayContent small {
+    display: block;
+    text-align: right;
+    font-style: italic;
+}
+small {
+    font-size: 9px;
+}
+i {
+    color: lightblue;
+}
+h1 {
+    font-size: 20px;
+}
+h5 {
+    font-size: 12px;
+}
+button {
+    margin: 20px 0 0 20px;
+}
 p.response-btn:hover
 {
     color: #2e6da4;
@@ -16,6 +112,16 @@ p.response-btn:hover
 }
 .submit-management-down{
     margin-top:24px;
+}
+
+.left{
+    margin-left:24px;
+}
+
+.left{
+
+    margin-left:0px;
+    float:left;
 }
 body {
     margin: 0;
@@ -319,6 +425,7 @@ th {
     content: "\e006";
 }
 .glyphicon-star-empty:before {
+    font-size: 25px;
     content: "\e007";
 }
 .glyphicon-user:before {
