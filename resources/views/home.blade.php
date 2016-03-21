@@ -13,7 +13,14 @@
         <div class="list-group">
             @foreach($companies as $company)
                 <div class="list-group-item">
-                    <btn class="btn btn-default" onClick="showMap({{ $company->id }})">{{ $company->name }}</btn>
+                    <ul class="list-inline">
+                        <li>
+                            <a href="/company/{{ $company->slug }}"> View {{ $company->name }} web page.</a>
+                        </li>
+                        <li>
+                            <btn class="btn btn-default" onClick="showMap({{ $company->id }})">Show map</btn>
+                        </li>
+                    </ul>
                 </div>
             @endforeach
         </div>

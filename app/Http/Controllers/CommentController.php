@@ -29,7 +29,7 @@ class CommentController extends Controller
      * @param $company_id
      * @return mixed
      */
-    public function store($company_id)
+    public function save($company_id)
     {
         $user = Auth::user();
         if($user == null)
@@ -64,7 +64,7 @@ class CommentController extends Controller
         if($comment->user_id != $user->id and $user->is_admin() == false)
             return Response::json(['success' => 'false', 'reason' => 'Not enough permissions']);
 
-        $comment->delete();
+        $comment->destroy();
 
         return Response::json(['success' => true]);
     }

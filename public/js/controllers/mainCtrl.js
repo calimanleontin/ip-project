@@ -22,9 +22,8 @@ angular.module('mainCtrl', [])
         }
         var routes = ['login', 'register', 'update', 'edit'];
 
-        if(secondVar == 'company' && company_slug in  routes == true )
+        if(secondVar == 'company' && company_slug in  routes == false )
         {
-            alert(company_slug in  routes);
             Comment.get(company_slug)
                 .success(function(data){
                     $scope.comments = data;
