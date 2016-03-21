@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use \Session;
+use \Response;
 
 use App\Http\Requests;
 

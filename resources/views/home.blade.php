@@ -10,6 +10,13 @@
 @section('content')
 
     <div class="">
+        <div class="list-group">
+            @foreach($companies as $company)
+                <div class="list-group-item">
+                    <btn class="btn btn-default" onClick="showMap({{ $company->id }})">{{ $company->name }}</btn>
+                </div>
+            @endforeach
+        </div>
         <button id="calcRoute">Calc route</button>
 
         <div id="map-canvas"></div>

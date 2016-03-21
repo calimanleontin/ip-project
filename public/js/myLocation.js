@@ -1,12 +1,14 @@
 $("#overlay").hide();
+$("#calcRoute").hide();
 
-function showMap(company) {
+function showMap(companyId) {
+    $("#calcRoute").show();
     navigator.geolocation.getCurrentPosition(function (position) {
         var latLng = new google.maps.LatLng(
             position.coords.latitude, position.coords.longitude);
-        $.get('/api/company-location/' + company, function (data) {
-
-
+        $.get('/api/company-location/' + companyId, function (data) {
+            var endLat = data['lat'];
+            var endLng = data['lng'];
             var directionsDisplay;
             var directionsService = new google.maps.DirectionsService();
             var map;
@@ -18,7 +20,7 @@ function showMap(company) {
             overlayWidth += leftMargin;
 
             var start = latLng;
-            var end = new google.maps.LatLng(44, 26);
+            var end = new google.maps.LatLng(endLat, endLng);
 
             function initialize() {
 

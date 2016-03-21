@@ -6,6 +6,7 @@ use App\User;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use \Response;
+use App\Companies;
 use Illuminate\Support\Facades\Input;
 use \Auth;
 
@@ -18,7 +19,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $companies = Companies::all();
+        return view('home')
+            ->withCompanies($companies);
     }
 
     /**
