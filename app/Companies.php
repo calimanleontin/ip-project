@@ -33,4 +33,13 @@ class Companies extends Model
     {
         return $this->hasMany('App\Comments');
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function grades()
+    {
+        return $this->hasMany('App\Grades');
+    }
 }
+
