@@ -45,6 +45,9 @@
     <script src="/js/services/tagService.js"></script> <!-- load our tag service -->
     <script src="/js/services/commentService.js"></script> <!-- load our comment service -->
     <script src="/js/app.js"></script> <!-- load our application -->
+
+    <script src="/js/local.js"></script> <!-- load local js -->
+
 <body ng-app="app" ng-controller="mainController">
 <nav class="navbar navbar-default">
     <div class="container-fluid">

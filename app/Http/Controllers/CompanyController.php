@@ -265,7 +265,8 @@ class CompanyController extends Controller
                 }
             }
             return view('home')
-                ->with('companies', $companies);
+                ->with('companies', $companies)
+                ->withTitle('Search Result');
         }
     }
 }

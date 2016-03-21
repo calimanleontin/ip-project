@@ -21,6 +21,24 @@
                 </div>
             </div>
         </div>
+        @if(!Auth::guest() and Auth::user()->is_company() == false)
+            <div class="panel-body">
+                <div class="list-group">
+                    <div class="list-group-item">
+                        Rate this company
+                    </div>
+                    <div class="list-group-item">
+                        <ul class = 'list-inline'>
+                            @for ($i = 0; $i < 10; $i++)
+                                <li>
+                                   <div class="glyphicon glyphicon-star-empty"onmouseover="fullStar(this)" onmouseout="emptyStar(this)" ng-click="rateCompany({{ $company->id }})"></div>
+                                </li>
+                            @endfor
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        @endif
 
         @if(!Auth::guest() and Auth::user()->is_company() == false)
             <div class="panel-body">
