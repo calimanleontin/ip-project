@@ -9,6 +9,7 @@ use \Response;
 use App\Companies;
 use Illuminate\Support\Facades\Input;
 use \Auth;
+use Illuminate\Support\Facades\Session;
 
 use App\Http\Requests;
 
@@ -125,5 +126,24 @@ class UserController extends Controller
         Auth::logout();
         return redirect('/')
             ->withMessage('Logout successfully');
+    }
+
+    /**
+     * @return mixed
+     */
+    public function saveLocation()
+    {
+        try {
+            $uri = $_SERVER['REQUEST_URI'];
+            $latLng = explode('/', $uri);
+            $lat = $latLng[sizeof($latLng) - 2];
+            $lng = $latLng[sizeof($latLng) - 1];
+            Session::put('lat', $lat);
+            Session::put('lng', $lng);
+            return Response::json(['status' => 200]);
+        }
+        catch(Exception $e){
+            return Response::json(['status' => 500]);
+        }
     }
 }

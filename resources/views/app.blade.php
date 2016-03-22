@@ -78,16 +78,15 @@
                                         </li>
 
                                         <li>
-                                            <select class='form-control'>
-                                                <option name="small" value="1" class='form-control'>1km</option>
-                                                <option name="medium" value="1" class='form-control'>10km</option>
-                                                <option name="large" value="1" class='form-control'>100km</option>
-
+                                            <select class='form-control' name="distance">
+                                                <option value="1" class='form-control'>1km</option>
+                                                <option value="10" class='form-control'>10km</option>
+                                                <option value="100" class='form-control'>100km</option>
                                             </select>
                                         </li>
 
                                         <li>
-                                            <input type="submit" value="Search" class="btn btn-default">
+                                            <input type="submit" value="Search" class="btn btn-default" onclick="saveLocation()">
                                         </li>
                                     </ul>
                                 </form>
@@ -129,9 +128,9 @@
                                 <a href="{{ url('/company/edit') }}">Edit Company</a>
                             </li>
                         @endif
-                                <li>
-                                    <a href="{{ url('/auth/logout') }}">Logout</a>
-                                </li>
+                            <li>
+                                <a href="{{ url('/auth/logout') }}">Logout</a>
+                            </li>
                         </ul>
                     </li>
                 @endif

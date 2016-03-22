@@ -236,11 +236,33 @@ class CompanyController extends Controller
     }
 
     /**
+     * @param $finalLat
+     * @param $finalLng
+     * @param $distance
+     * @return bool
+     */
+    public function checkDistance($finalLat, $finalLng, $distance)
+    {
+        $initialLat = Session::get('lat');
+        $initialLng = Session::get('lng');
+
+        if((sqrt(pow(($initialLat - $finalLat), 2)) + pow(($initialLng - $finalLng), 2))<= $distance*100)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    /**
      * @return $this
      */
     public function search()
     {
         $expression = Input::get('q');
+        $distance = Input::get('distance');
 
         $expression = explode(' ', $expression);
 
@@ -251,7 +273,12 @@ class CompanyController extends Controller
             foreach($matchedCompanies as $company)
             {
                 if(!in_array($company, $companies))
-                    $companies[] = $company;
+                {
+                    if($this->checkDistance($company->lat, $company->lng, $distance))
+                    {
+                        $companies[] = $company;
+                    }
+                }
             }
         }
         foreach ($expression as $item) {
@@ -261,7 +288,12 @@ class CompanyController extends Controller
                 foreach($companiesFromTags as $company)
                 {
                     if(!in_array($company, $companies))
-                        $companies[] = $company;
+                    {
+                        if($this->checkDistance($company->lat, $company->lng, $distance))
+                        {
+                            $companies[] = $company;
+                        }
+                    }
                 }
             }
             return view('home')
