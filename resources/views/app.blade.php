@@ -35,6 +35,9 @@
 
     {{--<![endif]-->--}}
 
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 
     <!-- JS -->
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.8/angular.min.js"></script> <!-- load angular -->
@@ -74,7 +77,7 @@
                                 <form class="form-inline" method='GET' action="/search">
                                     <ul class="list-inline">
                                         <li>
-                                            <input type="text" id='search' class="form-control" name="q" placeholder="Type..." onclick="loadCompanies()">
+                                            <input type="text" id='search' class="form-control" name="q" placeholder="Type...">
                                         </li>
 
                                         <li>

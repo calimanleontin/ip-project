@@ -9,6 +9,7 @@ use \Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\DB;
 use \Session;
 use \Response;
 
@@ -307,9 +308,10 @@ class CompanyController extends Controller
      */
     public function getSearchData()
     {
-        $companies = Companies::all();
-        $tags = Tags::all();
-        return Response::json(['status' => 200, 'companies' => $companies, 'tags' => $tags]);
+        $term = Input::get('term');
+        $companies = DB::table('users')->where('name', 'like', '%' . $term . '%')->lists('name');
+        $tags = DB::table('tags')->where('name', 'like', '%' . $term . '%')->lists('name');
+        $data = array_merge($companies, $tags);
+        return Response::json($data);
     }
 }
-
