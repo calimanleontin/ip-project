@@ -62,5 +62,6 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/api/auto-complete', 'CompanyController@getSearchData');
 
     Route::get('/my-profile', 'ProfileController@index');
+    Route::get('/edit-profile', 'ProfileController@index');
 
 });

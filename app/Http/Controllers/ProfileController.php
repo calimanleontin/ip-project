@@ -27,7 +27,17 @@ class ProfileController extends Controller
         }
         $profile = $user->profile;
 
-        return view('profile.show')
-            ->withProfile($profile);
+        $uri = $_SERVER['REQUEST_URI'];
+        if($uri == '/my-profile')
+        {
+            return view('profile.show')
+                ->withProfile($profile);
+        }
+        else
+        {
+            return view('profile.edit')
+                ->withProfile($profile);
+        }
     }
 }
+
