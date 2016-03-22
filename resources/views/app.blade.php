@@ -70,17 +70,28 @@
                         </li>
 
                         <li>
-                            <form class="form-inline" method='GET' action="/search">
-                                <ul class="list-inline">
-                                    <li>
-                                        <input type="text" class="form-control" name="q" placeholder="Type...">
-                                    </li>
+                            <div class='search-left-space'>
+                                <form class="form-inline" method='GET' action="/search">
+                                    <ul class="list-inline">
+                                        <li>
+                                            <input type="text" class="form-control" name="q" placeholder="Type...">
+                                        </li>
 
-                                    <li>
-                                        <input type="submit" value="Search" class="btn btn-default">
-                                    </li>
-                                </ul>
-                            </form>
+                                        <li>
+                                            <select class='form-control'>
+                                                <option name="small" value="1" class='form-control'>1km</option>
+                                                <option name="medium" value="1" class='form-control'>10km</option>
+                                                <option name="large" value="1" class='form-control'>100km</option>
+
+                                            </select>
+                                        </li>
+
+                                        <li>
+                                            <input type="submit" value="Search" class="btn btn-default">
+                                        </li>
+                                    </ul>
+                                </form>
+                            </div>
                         </li>
                     </ul>
                 </li>
