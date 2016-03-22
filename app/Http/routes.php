@@ -61,4 +61,6 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/api/save-location/{lat}/{lng}', 'UserController@saveLocation');
     Route::get('/api/auto-complete', 'CompanyController@getSearchData');
 
+    Route::get('/my-profile', 'ProfileController@index');
+
 });
