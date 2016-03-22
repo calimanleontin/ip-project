@@ -15,6 +15,8 @@ class Profile extends Migration
         Schema::create('profiles', function(Blueprint $table){
             $table->increments('id');
             $table->string('avatar');
+            $table->string('firstName');
+            $table->string('lastName');
             $table->date('birthday');
             $table->enum('sex',['masc', 'fem']);
             $table->text('about');

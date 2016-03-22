@@ -116,7 +116,7 @@
                         <ul class="dropdown-menu" role="menu">
                             @if(!Auth::guest() and Auth::user()->is_company() == false)
                                 <li>
-                                    <a href="{{ url('/profile/user/'.Auth::id()) }}">My Profile</a>
+                                    <a href="{{ url('/my-profile') }}">My Profile</a>
                                 </li>
                             @endif
 

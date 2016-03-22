@@ -27,7 +27,7 @@ class ProfileController extends Controller
         }
         $profile = $user->profile;
 
-        return view('profile.index')
+        return view('profile.show')
             ->withProfile($profile);
     }
 }
