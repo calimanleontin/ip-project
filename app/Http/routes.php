@@ -59,5 +59,6 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/api/grades/{company_slug}', 'GradeController@getGradeValue');
     Route::get('/api/grades/{companyId}/{value}', 'GradeController@setGradeValue');
     Route::get('/api/save-location/{lat}/{lng}', 'UserController@saveLocation');
+    Route::get('/api/auto-complete', 'CompanyController@getSearchData');
 
 });

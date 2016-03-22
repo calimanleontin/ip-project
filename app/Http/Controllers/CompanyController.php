@@ -301,5 +301,15 @@ class CompanyController extends Controller
                 ->withTitle('Search Result');
         }
     }
+
+    /**
+     * @return mixed
+     */
+    public function getSearchData()
+    {
+        $companies = Companies::all();
+        $tags = Tags::all();
+        return Response::json(['status' => 200, 'companies' => $companies, 'tags' => $tags]);
+    }
 }
 
