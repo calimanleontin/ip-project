@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Profiles;
 use App\User;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
@@ -80,6 +81,9 @@ class UserController extends Controller
         $user->email = $email;
         $user->password = password_hash($password, PASSWORD_BCRYPT);
         $user->save();
+        $profile = new Profiles();
+        $profile->user_id = $user->id;
+        $profile->save();
         Auth::login($user);
         return redirect('/')->withMessage('Register successfully');
     }
