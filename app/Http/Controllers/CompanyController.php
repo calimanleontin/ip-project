@@ -309,7 +309,7 @@ class CompanyController extends Controller
     public function getSearchData()
     {
         $term = Input::get('term');
-        $companies = DB::table('users')->where('name', 'like', '%' . $term . '%')->lists('name');
+        $companies = DB::table('companies')->where('name', 'like', '%' . $term . '%')->lists('name');
         $tags = DB::table('tags')->where('name', 'like', '%' . $term . '%')->lists('name');
         $data = array_merge($companies, $tags);
         return Response::json($data);
