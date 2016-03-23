@@ -3,7 +3,7 @@
     Change Password
 @endsection
 @section('content')
-    <form method="POST" action="/auth/updatePassword" class="form-horizontal">
+    <form method="POST" action="/auth/update-password" class="form-horizontal">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
         <div class="form-group">

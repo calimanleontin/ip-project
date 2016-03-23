@@ -144,6 +144,37 @@ class UserController extends Controller
         return view('auth.change');
     }
 
+    public function updatePassword()
+    {
+        if (Auth::check() == false)
+            return redirect('/auth/login')
+                ->withErrors('You are not logged in');
+
+        /**
+         * @var $user User
+         */
+        $user = Auth::user();
+        $actualPassword = Input::get('actualPassword');
+        $newPassword = Input::get('newPassword');
+        $confirm = Input::get('confirmPassword');
+
+        if (!password_verify($actualPassword, $user->password))
+        {
+            return redirect('/auth/change-password')
+                ->withErrors('Wrong Password');
+        }
+
+        if($newPassword == $confirm and $newPassword != '')
+        {
+            $user->password = password_hash($newPassword, PASSWORD_BCRYPT);
+            $user->save();
+            return redirect('/my-profile')
+                ->withMessage('Success');
+        }
+        return redirect('/auth/change-password')
+            ->withErrors('Passwords do not match');
+    }
+
     /**
      * @return mixed
      */

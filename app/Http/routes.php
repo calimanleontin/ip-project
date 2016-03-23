@@ -33,6 +33,8 @@ Route::group(['middleware' => ['web']], function () {
     Route::post('/auth/register', 'UserController@postRegister');
     Route::post('/auth/login', 'UserController@postLogin');
     Route::get('/auth/change-password', 'UserController@changePassword');
+    Route::post('/auth/update-password', 'UserController@updatePassword');
+
 
     Route::get('/company', 'CompanyController@account');
     Route::get('/company/register', 'CompanyController@getRegister');

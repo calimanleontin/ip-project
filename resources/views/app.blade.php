@@ -134,6 +134,10 @@
                             <li>
                                 <a href="{{ url('/company/edit') }}">Edit Company</a>
                             </li>
+
+                            <li>
+                                <a href="{{ url('/auth/change-password') }}">Change Password</a>
+                            </li>
                         @endif
                             <li>
                                 <a href="{{ url('/auth/logout') }}">Logout</a>
