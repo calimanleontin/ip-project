@@ -133,6 +133,18 @@ class UserController extends Controller
     }
 
     /**
+     * @return $this|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function changePassword()
+    {
+        if(Auth::check() == false)
+            return redirect('/auth/login')
+                ->withErrors('You are not logged in');
+
+        return view('auth.change');
+    }
+
+    /**
      * @return mixed
      */
     public function saveLocation()

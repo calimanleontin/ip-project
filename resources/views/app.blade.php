@@ -118,6 +118,10 @@
                                 <li>
                                     <a href="{{ url('/my-profile') }}">My Profile</a>
                                 </li>
+
+                                <li>
+                                    <a href="{{ url('/auth/change-password') }}">Change Password</a>
+                                </li>
                             @endif
 
                         @if(!Auth::guest() and Auth::user()->is_admin())
