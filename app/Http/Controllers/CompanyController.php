@@ -17,6 +17,7 @@ use App\Http\Requests;
 
 class CompanyController extends Controller
 {
+
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
@@ -237,24 +238,38 @@ class CompanyController extends Controller
     }
 
     /**
+     * @param $initialLat
+     * @param $initialLong
      * @param $finalLat
-     * @param $finalLng
+     * @param $finalLong
+     * @return int
+     */
+    function calculateDistance($lat1, $lon1, $lat2, $lon2, $unit = 'K') {
+
+        $theta = $lon1 - $lon2;
+        $dist = sin(deg2rad($lat1)) * sin(deg2rad($lat2)) +  cos(deg2rad($lat1)) * cos(deg2rad($lat2)) * cos(deg2rad($theta));
+        $dist = acos($dist);
+        $dist = rad2deg($dist);
+        $miles = $dist * 60 * 1.1515;
+        $unit = strtoupper($unit);
+
+        if ($unit == "K") {
+            return ($miles * 1.609344);
+        } else if ($unit == "N") {
+            return ($miles * 0.8684);
+        } else {
+            return $miles;
+        }
+    }
+
+    /**
+     * @param $maxDistance
      * @param $distance
      * @return bool
      */
-    public function checkDistance($finalLat, $finalLng, $distance)
+    public function checkLocation($maxDistance, $distance)
     {
-        $initialLat = Session::get('lat');
-        $initialLng = Session::get('lng');
-
-        if((sqrt(pow(($initialLat - $finalLat), 2)) + pow(($initialLng - $finalLng), 2))<= $distance*100)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        return ($maxDistance <= $distance);
     }
 
     /**
@@ -264,6 +279,9 @@ class CompanyController extends Controller
     {
         $expression = Input::get('q');
         $distance = Input::get('distance');
+        $initialLat = Session::get('lat');
+        $initialLng = Session::get('lng');
+
 
         $expression = explode(' ', $expression);
 
@@ -275,7 +293,9 @@ class CompanyController extends Controller
             {
                 if(!in_array($company, $companies))
                 {
-                    if($this->checkDistance($company->lat, $company->lng, $distance))
+                    $maxDistance = $this->calculateDistance($initialLat, $initialLng, $company->lat, $company->lng);
+
+                    if($this->checkLocation($maxDistance, $distance))
                     {
                         $companies[] = $company;
                     }
@@ -290,7 +310,8 @@ class CompanyController extends Controller
                 {
                     if(!in_array($company, $companies))
                     {
-                        if($this->checkDistance($company->lat, $company->lng, $distance))
+                        $maxDistance = $this->calculateDistance($initialLat, $initialLng, $company->lat, $company->lng);
+                        if($this->checkDistance($maxDistance, $distance))
                         {
                             $companies[] = $company;
                         }

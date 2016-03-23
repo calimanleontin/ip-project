@@ -77,7 +77,7 @@
                                 <form class="form-inline" method='GET' action="/search">
                                     <ul class="list-inline">
                                         <li>
-                                            <input type="text" id='search' class="form-control" name="q" placeholder="Type...">
+                                            <input type="text" id='search' class="form-control" name="q" placeholder="Type..." onclick="saveLocation()">
                                         </li>
 
                                         <li>
