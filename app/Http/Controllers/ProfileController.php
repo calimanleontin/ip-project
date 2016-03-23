@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use \Auth;
+use Illuminate\Support\Facades\Input;
+use App\Profiles;
+use App\User;
 use App\Http\Requests;
 
 class ProfileController extends Controller
@@ -38,6 +40,45 @@ class ProfileController extends Controller
             return view('profile.edit')
                 ->withProfile($profile);
         }
+    }
+
+    /**
+     * @return $this
+     */
+    public function update()
+    {
+        if(Auth::check() == false)
+            return redirect('/auth/login')
+                ->withErrors('You are not logged in');
+
+        /**
+         * @var $user User
+         */
+        $user = Auth::user();
+
+        /**
+         * @var $profile Profiles
+         */
+        $profile = $user->profile;
+
+        $profile->firstName = Input::get('firstName');
+        $profile->lastName = Input::get('lastName');
+        $profile->birthday = Input::get('birthday');
+        $profile->about = Input::get('about');
+        $profile->sex = Input::get('sex');
+
+        if(Input::file('avatar') != null) {
+            $destinationPath = 'images/profiles';
+            $originalName = Input::file('image')->getClientOriginalName();
+            $fileName = date() . '.' . $originalName;
+            $profile->avatar = $fileName;
+            Input::file('image')->move($destinationPath, $fileName);
+        }
+
+        $profile->save();
+
+        return redirect('/my-profile')
+            ->withMessage('Updates made successfully');
     }
 }
 

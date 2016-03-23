@@ -10,6 +10,8 @@
             <div class="list-group">
                 <form class="form-horizontal" action="/update-profile" method="POST">
 
+                    {!! Form::token() !!}
+
                     <div class="form-group">
                         <label for="firstName" class="col-sm-2 control-label">First Name:</label>
                         <div class="col-sm-6">
