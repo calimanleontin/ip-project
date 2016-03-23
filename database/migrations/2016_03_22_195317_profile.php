@@ -17,7 +17,7 @@ class Profile extends Migration
             $table->string('avatar');
             $table->string('firstName');
             $table->string('lastName');
-            $table->date('birthday');
+            $table->date('birthday')->format('d/m/Y');
             $table->enum('sex',['masc', 'fem']);
             $table->text('about');
             $table->integer('user_id')->unsigned()->default(0);

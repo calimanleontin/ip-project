@@ -49,9 +49,9 @@
                         <label for="birthday" class="col-sm-2 control-label">Birthday:</label>
                         <div class="col-sm-6">
                             @if(empty($profile->birthday))
-                                <input type="data" name="birthday" id="datePicker" class="form-control" placeholder="Birthday...">
+                                <input type="date" name="birthday" id="datePicker" class="form-control" placeholder="Birthday...">
                             @else
-                                <input type="data" name="birthday" value="{{ $profile->birthday }}" id="datePicker" class="form-control" placeholder="Birthday...">
+                                <input type="date" name="birthday" value="{{ $profile->birthday }}" id="datePicker" class="form-control" placeholder="Birthday...">
                             @endif
                         </div>
                     </div>
