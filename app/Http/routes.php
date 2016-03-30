@@ -32,6 +32,9 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/auth/logout', 'UserController@logout');
     Route::post('/auth/register', 'UserController@postRegister');
     Route::post('/auth/login', 'UserController@postLogin');
+    Route::get('/auth/change-password', 'UserController@changePassword');
+    Route::post('/auth/update-password', 'UserController@updatePassword');
+
 
     Route::get('/company', 'CompanyController@account');
     Route::get('/company/register', 'CompanyController@getRegister');
@@ -58,5 +61,11 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/api/company-location/{company}', 'CompanyController@getLocation');
     Route::get('/api/grades/{company_slug}', 'GradeController@getGradeValue');
     Route::get('/api/grades/{companyId}/{value}', 'GradeController@setGradeValue');
+    Route::get('/api/save-location/{lat}/{lng}', 'UserController@saveLocation');
+    Route::get('/api/auto-complete', 'CompanyController@getSearchData');
+
+    Route::get('/my-profile', 'ProfileController@index');
+    Route::get('/edit-profile', 'ProfileController@index');
+    Route::post('/update-profile', 'ProfileController@update');
 
 });

@@ -40,7 +40,11 @@
                             </li>
 
                             <li>
-                                Actual grade : @{{ average }}
+                                Average grade : @{{ average }}
+                            </li>
+
+                            <li>
+                                My grade : @{{ myGrade }}
                             </li>
 
                         </ul>

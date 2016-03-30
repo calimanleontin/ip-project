@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Profiles;
 use App\User;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
@@ -9,6 +10,7 @@ use \Response;
 use App\Companies;
 use Illuminate\Support\Facades\Input;
 use \Auth;
+use Illuminate\Support\Facades\Session;
 
 use App\Http\Requests;
 
@@ -79,6 +81,9 @@ class UserController extends Controller
         $user->email = $email;
         $user->password = password_hash($password, PASSWORD_BCRYPT);
         $user->save();
+        $profile = new Profiles();
+        $profile->user_id = $user->id;
+        $profile->save();
         Auth::login($user);
         return redirect('/')->withMessage('Register successfully');
     }
@@ -125,5 +130,67 @@ class UserController extends Controller
         Auth::logout();
         return redirect('/')
             ->withMessage('Logout successfully');
+    }
+
+    /**
+     * @return $this|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function changePassword()
+    {
+        if(Auth::check() == false)
+            return redirect('/auth/login')
+                ->withErrors('You are not logged in');
+
+        return view('auth.change');
+    }
+
+    public function updatePassword()
+    {
+        if (Auth::check() == false)
+            return redirect('/auth/login')
+                ->withErrors('You are not logged in');
+
+        /**
+         * @var $user User
+         */
+        $user = Auth::user();
+        $actualPassword = Input::get('actualPassword');
+        $newPassword = Input::get('newPassword');
+        $confirm = Input::get('confirmPassword');
+
+        if (!password_verify($actualPassword, $user->password))
+        {
+            return redirect('/auth/change-password')
+                ->withErrors('Wrong Password');
+        }
+
+        if($newPassword == $confirm and $newPassword != '')
+        {
+            $user->password = password_hash($newPassword, PASSWORD_BCRYPT);
+            $user->save();
+            return redirect('/my-profile')
+                ->withMessage('Success');
+        }
+        return redirect('/auth/change-password')
+            ->withErrors('Passwords do not match');
+    }
+
+    /**
+     * @return mixed
+     */
+    public function saveLocation()
+    {
+        try {
+            $uri = $_SERVER['REQUEST_URI'];
+            $latLng = explode('/', $uri);
+            $lat = $latLng[sizeof($latLng) - 2];
+            $lng = $latLng[sizeof($latLng) - 1];
+            Session::put('lat', $lat);
+            Session::put('lng', $lng);
+            return Response::json(['status' => 200]);
+        }
+        catch(Exception $e){
+            return Response::json(['status' => 500]);
+        }
     }
 }

@@ -9,6 +9,7 @@ use \Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\DB;
 use \Session;
 use \Response;
 
@@ -16,6 +17,7 @@ use App\Http\Requests;
 
 class CompanyController extends Controller
 {
+
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
@@ -236,11 +238,50 @@ class CompanyController extends Controller
     }
 
     /**
+     * @param $initialLat
+     * @param $initialLong
+     * @param $finalLat
+     * @param $finalLong
+     * @return int
+     */
+    function calculateDistance($lat1, $lon1, $lat2, $lon2, $unit = 'K') {
+
+        $theta = $lon1 - $lon2;
+        $dist = sin(deg2rad($lat1)) * sin(deg2rad($lat2)) +  cos(deg2rad($lat1)) * cos(deg2rad($lat2)) * cos(deg2rad($theta));
+        $dist = acos($dist);
+        $dist = rad2deg($dist);
+        $miles = $dist * 60 * 1.1515;
+        $unit = strtoupper($unit);
+
+        if ($unit == "K") {
+            return ($miles * 1.609344);
+        } else if ($unit == "N") {
+            return ($miles * 0.8684);
+        } else {
+            return $miles;
+        }
+    }
+
+    /**
+     * @param $maxDistance
+     * @param $distance
+     * @return bool
+     */
+    public function checkLocation($maxDistance, $distance)
+    {
+        return ($maxDistance <= $distance);
+    }
+
+    /**
      * @return $this
      */
     public function search()
     {
         $expression = Input::get('q');
+        $distance = Input::get('distance');
+        $initialLat = Session::get('lat');
+        $initialLng = Session::get('lng');
+
 
         $expression = explode(' ', $expression);
 
@@ -251,7 +292,14 @@ class CompanyController extends Controller
             foreach($matchedCompanies as $company)
             {
                 if(!in_array($company, $companies))
-                    $companies[] = $company;
+                {
+                    $maxDistance = $this->calculateDistance($initialLat, $initialLng, $company->lat, $company->lng);
+
+                    if($this->checkLocation($maxDistance, $distance))
+                    {
+                        $companies[] = $company;
+                    }
+                }
             }
         }
         foreach ($expression as $item) {
@@ -261,7 +309,13 @@ class CompanyController extends Controller
                 foreach($companiesFromTags as $company)
                 {
                     if(!in_array($company, $companies))
-                        $companies[] = $company;
+                    {
+                        $maxDistance = $this->calculateDistance($initialLat, $initialLng, $company->lat, $company->lng);
+                        if($this->checkDistance($maxDistance, $distance))
+                        {
+                            $companies[] = $company;
+                        }
+                    }
                 }
             }
             return view('home')
@@ -269,5 +323,16 @@ class CompanyController extends Controller
                 ->withTitle('Search Result');
         }
     }
-}
 
+    /**
+     * @return mixed
+     */
+    public function getSearchData()
+    {
+        $term = Input::get('term');
+        $companies = DB::table('companies')->where('name', 'like', '%' . $term . '%')->lists('name');
+        $tags = DB::table('tags')->where('name', 'like', '%' . $term . '%')->lists('name');
+        $data = array_merge($companies, $tags);
+        return Response::json($data);
+    }
+}

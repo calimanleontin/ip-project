@@ -35,6 +35,9 @@
 
     {{--<![endif]-->--}}
 
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 
     <!-- JS -->
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.8/angular.min.js"></script> <!-- load angular -->
@@ -70,17 +73,27 @@
                         </li>
 
                         <li>
-                            <form class="form-inline" method='GET' action="/search">
-                                <ul class="list-inline">
-                                    <li>
-                                        <input type="text" class="form-control" name="q" placeholder="Type...">
-                                    </li>
+                            <div class='search-left-space'>
+                                <form class="form-inline" method='GET' action="/search">
+                                    <ul class="list-inline">
+                                        <li>
+                                            <input type="text" id='search' class="form-control" name="q" placeholder="Type..." onclick="saveLocation()">
+                                        </li>
 
-                                    <li>
-                                        <input type="submit" value="Search" class="btn btn-default">
-                                    </li>
-                                </ul>
-                            </form>
+                                        <li>
+                                            <select class='form-control' name="distance">
+                                                <option value="1" class='form-control'>1km</option>
+                                                <option value="10" class='form-control'>10km</option>
+                                                <option value="100" class='form-control'>100km</option>
+                                            </select>
+                                        </li>
+
+                                        <li>
+                                            <input type="submit" value="Search" class="btn btn-default" onclick="saveLocation()">
+                                        </li>
+                                    </ul>
+                                </form>
+                            </div>
                         </li>
                     </ul>
                 </li>
@@ -103,7 +116,11 @@
                         <ul class="dropdown-menu" role="menu">
                             @if(!Auth::guest() and Auth::user()->is_company() == false)
                                 <li>
-                                    <a href="{{ url('/profile/user/'.Auth::id()) }}">My Profile</a>
+                                    <a href="{{ url('/my-profile') }}">My Profile</a>
+                                </li>
+
+                                <li>
+                                    <a href="{{ url('/auth/change-password') }}">Change Password</a>
                                 </li>
                             @endif
 
@@ -117,10 +134,14 @@
                             <li>
                                 <a href="{{ url('/company/edit') }}">Edit Company</a>
                             </li>
+
+                            <li>
+                                <a href="{{ url('/auth/change-password') }}">Change Password</a>
+                            </li>
                         @endif
-                                <li>
-                                    <a href="{{ url('/auth/logout') }}">Logout</a>
-                                </li>
+                            <li>
+                                <a href="{{ url('/auth/logout') }}">Logout</a>
+                            </li>
                         </ul>
                     </li>
                 @endif

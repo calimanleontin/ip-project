@@ -8,6 +8,7 @@ p.response-btn
 {
     color: #2e6da4;
 }
+
 .star .hover{
     content: "\e006";
 }
@@ -15,6 +16,10 @@ p.response-btn
 #map-canvas {
     height:570px;
     width:570px;
+}
+
+.search-left-space{
+    margin-left:40px;
 }
 
 #overlay {
