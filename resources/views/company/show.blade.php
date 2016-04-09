@@ -31,7 +31,7 @@
                         <ul class = 'list-inline'>
                             <li>
                                 <ul class="list-inline">
-                                    @for ($i = 0; $i < 10; $i++)
+                                    @for ($i = 1; $i <= 10; $i++)
                                         <li>
                                             <div class="glyphicon glyphicon-star-empty" onmouseover="fullStar(this)" onmouseout="emptyStar(this)" ng-click="rateCompany({{ $company->id }}, {{ $i }})"></div>
                                         </li>
