@@ -27,6 +27,10 @@ function showMap(companyId) {
 
             function initialize(lat, lng) {
 
+
+                var location = new google.maps.LatLng(lat, lng);
+
+
                 var btn1 = document.getElementById('calcRoute');
                 btn1.addEventListener('click', calcRoute);
 
@@ -35,9 +39,9 @@ function showMap(companyId) {
                 });
 
                 var mapOptions = {
-                    zoom: 13,
+                    zoom: 16,
                     mapTypeId: google.maps.MapTypeId.ROADMAP,
-                    center: start,
+                    center: end,
                     panControlOptions: {
                         position: google.maps.ControlPosition.TOP_RIGHT
                     },
@@ -47,16 +51,13 @@ function showMap(companyId) {
                 };
 
                 map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
-                directionsDisplay.setMap(map);
-
                 var marker = new google.maps.Marker({
-                    position: {
-                        lat: lat,
-                        lng: lng
-                    },
+                    position: location,
                     map: map,
-                    draggable: true
+                    draggable: false
                 });
+
+                directionsDisplay.setMap(map);
 
             }
 
@@ -176,7 +177,6 @@ function showMap(companyId) {
 
             function writeDirectionsSteps(steps) {
 
-
                 var overlayContent = document.getElementById("overlayContent");
                 overlayContent.innerHTML = '';
 
@@ -186,7 +186,9 @@ function showMap(companyId) {
                 }
             }
 
-            initialize( position.coords.latitude,  position.coords.longitude);
+            //initialize( position.coords.latitude,  position.coords.longitude);
+            initialize( data['lat'],  data['lng']);
+
         });
     });
 }
