@@ -2,11 +2,14 @@ $("#overlay").hide();
 $("#calcRoute").hide();
 
 function showMap(companyId) {
+    $("#overlay").hide();
+
     $("#calcRoute").show();
     navigator.geolocation.getCurrentPosition(function (position) {
         var latLng = new google.maps.LatLng(
             position.coords.latitude, position.coords.longitude);
         $.get('/api/company-location/' + companyId, function (data) {
+
             var endLat = data['lat'];
             var endLng = data['lng'];
             var directionsDisplay;
@@ -22,7 +25,7 @@ function showMap(companyId) {
             var start = latLng;
             var end = new google.maps.LatLng(endLat, endLng);
 
-            function initialize() {
+            function initialize(lat, lng) {
 
                 var btn1 = document.getElementById('calcRoute');
                 btn1.addEventListener('click', calcRoute);
@@ -45,6 +48,16 @@ function showMap(companyId) {
 
                 map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
                 directionsDisplay.setMap(map);
+
+                var marker = new google.maps.Marker({
+                    position: {
+                        lat: lat,
+                        lng: lng
+                    },
+                    map: map,
+                    draggable: true
+                });
+
             }
 
             function offsetMap() {
@@ -173,7 +186,7 @@ function showMap(companyId) {
                 }
             }
 
-            initialize();
+            initialize( position.coords.latitude,  position.coords.longitude);
         });
     });
 }
