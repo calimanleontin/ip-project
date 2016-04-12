@@ -311,7 +311,7 @@ class CompanyController extends Controller
                     if(!in_array($company, $companies))
                     {
                         $maxDistance = $this->calculateDistance($initialLat, $initialLng, $company->lat, $company->lng);
-                        if($this->checkDistance($maxDistance, $distance))
+                        if($this->checkLocation($maxDistance, $distance))
                         {
                             $companies[] = $company;
                         }
