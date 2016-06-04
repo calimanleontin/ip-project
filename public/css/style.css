@@ -1,0 +1,122 @@
+/* Reset rules */
+.be-cleared:after {
+	display: table;
+	content: " ";
+	clear: both;
+}
+.display-block {
+	width: 100% !important;
+	display: block !important;
+}
+
+.reset-border-radius {
+	border-radius: 0 !important;
+}
+.reset-border {
+	border: 0 !important;
+}
+.reset-padding {
+	padding: 0 !important;
+}
+select.reset-select {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+}
+.overflow-hidden {
+	overflow: hidden !important;
+}
+
+/* Custom rules */
+select.ip-select {
+	/* TO DO: add custom arrow*/
+}
+/* Removes annoying bootstrap hover effect */
+a:hover,
+a:focus,
+a.focus,
+a:active {
+	background-color: transparent !important;
+}
+::-webkit-input-placeholder {
+   color: #fff !important;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   color: #fff !important;  
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: #fff !important;
+}
+
+:-ms-input-placeholder {  
+   color: #fff !important;
+}
+.ip-button {
+	color: #fff !important;
+	text-transform: uppercase;
+	font-weight: 900 !important;
+}
+.primary-ip-button {
+	background-color: #f6d540 !important;
+}
+.primary-ip-button:hover,
+.primary-ip-button:focus,
+.primary-ip-button.focus,
+.primary-ip-button:active {
+	background-color: #fbb141 !important;
+}
+.secondary-ip-button {
+	background-color: #1572b3 !important;
+}
+.secondary-ip-button:hover,
+.secondary-ip-button:focus,
+.secondary-ip-button.focus,
+.secondary-ip-button:active {
+	background-color: #404f9c !important;	
+}
+.ip-list-group-item.list-group-item:last-child {
+    margin-bottom: 0;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+.ip-list-group-item.list-group-item:first-child {
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+}
+.ip-navbar {
+	border-top: 0 !important;
+	border-right: 0 !important;
+	border-left: 0 !important;
+	background-color: #64b5d0 !important;
+	border-color: #40509d !important;
+	border-radius: 0 !important;
+}
+select.ip-input {
+	cursor: pointer;
+}
+select.ip-input,
+input.ip-input {
+	background-color: #f6d540 !important;
+}
+select.ip-input option {
+	padding: 10px 0 !important;
+}
+.ip-panel {
+	border-color: #40509c !important;
+}
+.ip-panel > .panel-heading {
+    color: #fff !important;
+    background-color: #2196bc !important;
+    border-color: #40509c !important;
+}
+
+/* Custom paddings, margins */
+.ptb14 {
+	padding-top: 14px;
+	padding-bottom: 14px;
+}
+.ptb20 {
+	padding-top: 20px !important;
+	padding-bottom: 20px !important;
+}

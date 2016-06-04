@@ -52,7 +52,7 @@
     <script src="/js/local.js"></script> <!-- load local js -->
 
 <body ng-app="app" ng-controller="mainController">
-<nav class="navbar navbar-default">
+<nav class="navbar ip-navbar">
     <div class="container-fluid">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -63,13 +63,12 @@
             </button>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-                <br>
-
+            <ul class="nav navbar-nav ptb14">
+                <!--<br>-->
                 <li>
                     <ul class="list list-inline">
                         <li>
-                             <a href="{{ url('/') }}"><btn class="btn btn-default">Home</btn></a>
+                             <a href="{{ url('/') }}"><btn class="btn primary-ip-button ip-button reset-border">Home</btn></a>
                         </li>
 
                         <li>
@@ -77,19 +76,19 @@
                                 <form class="form-inline" method='GET' action="/search">
                                     <ul class="list-inline">
                                         <li>
-                                            <input type="text" id='search' class="form-control" name="q" placeholder="Type..." onclick="saveLocation()">
+                                            <input type="text" id='search' class="form-control ip-input reset-border ip-button" name="q" placeholder="Type..." onclick="saveLocation()">
                                         </li>
 
                                         <li>
-                                            <select class='form-control' name="distance">
-                                                <option value="1" class='form-control'>1km</option>
-                                                <option value="10" class='form-control'>10km</option>
-                                                <option value="100" class='form-control'>100km</option>
+                                            <select class='form-control reset-select ip-select ip-input reset-border ip-button' name="distance">
+                                                <option value="1" class='form-control display-block reset-border-radius ip-button primary-ip-button'>1km</option>
+                                                <option value="10" class='form-control display-block reset-border-radius ip-button primary-ip-button'>10km</option>
+                                                <option value="100" class='form-control display-block reset-border-radius ip-button primary-ip-button'>100km</option>
                                             </select>
                                         </li>
 
                                         <li>
-                                            <input type="submit" value="Search" class="btn btn-default" onclick="saveLocation()">
+                                            <input type="submit" value="Search" class="btn ip-button primary-ip-button reset-border" onclick="saveLocation()">
                                         </li>
                                     </ul>
                                 </form>
@@ -98,17 +97,17 @@
                     </ul>
                 </li>
             </ul>
-            <br>
+            <!--<br>-->
             <ul class="nav navbar-nav navbar-right">
                 @if (Auth::guest())
                     <li>
-                        <a href="{{ url('/auth/login') }}">Login</a>
+                        <a href="{{ url('/auth/login') }}"><btn class="btn primary-ip-button ip-button reset-border">Login</btn></a>
                     </li>
                     <li>
-                        <a href="{{ url('/auth/register') }}">Register</a>
+                        <a href="{{ url('/auth/register') }}"><btn class="btn primary-ip-button ip-button reset-border">Register</btn></a>
                     </li>
                     <li>
-                        <a href="{{ url('/company') }}">Companies</a>
+                        <a href="{{ url('/company') }}"><btn class="btn primary-ip-button ip-button reset-border">Companies</btn></a>
                     </li>
                 @else
                     <li class="dropdown">
@@ -116,11 +115,11 @@
                         <ul class="dropdown-menu" role="menu">
                             @if(!Auth::guest() and Auth::user()->is_company() == false)
                                 <li>
-                                    <a href="{{ url('/my-profile') }}">My Profile</a>
+                                    <a href="{{ url('/my-profile') }}"><btn class="btn btn-default primary-ip-button ip-button reset-border">My Profile</btn></a>
                                 </li>
 
                                 <li>
-                                    <a href="{{ url('/auth/change-password') }}">Change Password</a>
+                                    <a href="{{ url('/auth/change-password') }}"><btn class="btn btn-default primary-ip-button ip-button reset-border">Change Password</btn></a>
                                 </li>
                             @endif
 
@@ -172,7 +171,7 @@
 
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
-            <div class="panel panel-default">
+            <div class="panel ip-panel">
                 <div class="panel-heading">
                     <h2>@yield('title')</h2>
                     @yield('title-meta')
