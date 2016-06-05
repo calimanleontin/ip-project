@@ -212,7 +212,7 @@ class UserController extends Controller
             }
             else
             {
-                return true;
+                return $user->id;
             }
         }
         else
