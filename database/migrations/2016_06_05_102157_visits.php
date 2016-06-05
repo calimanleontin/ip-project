@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Grades extends Migration
+class Visits extends Migration
 {
     /**
      * Run the migrations.
@@ -12,19 +12,21 @@ class Grades extends Migration
      */
     public function up()
     {
-        Schema::create('grades', function(Blueprint $table){
-            $table->increments('id');
-            $table->integer('value');
-            $table->integer('user_id')->unsigned()->default(0);
+        Schema::create('visits', function(Blueprint $table) {
+           $table->increments('id');
+
+            $table->integer('user_id')->unsigned();
             $table->foreign('user_id')
                 ->references('id')
-                ->on('users')
-                ->onDelete('cascade');
-            $table->integer('company_id')->unsigned()->default(0);
+                ->on('users');
+
+
+            $table->integer('company_id')->unsigned();
             $table->foreign('company_id')
                 ->references('id')
-                ->on('companies')
-                ->onDelete('cascade');
+                ->on('companies');
+
+            $table->integer('visits')->unsigned()->default(0);
             $table->timestamps();
         });
     }
@@ -36,6 +38,6 @@ class Grades extends Migration
      */
     public function down()
     {
-        Schema::drop('grades');
+        Schema::drop('visits');
     }
 }

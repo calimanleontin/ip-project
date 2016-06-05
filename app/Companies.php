@@ -41,5 +41,10 @@ class Companies extends Model
     {
         return $this->hasMany('App\Grades');
     }
+    
+    public function visit()
+    {
+        return $this->hasOne('App\Visits');
+    }
 }
 

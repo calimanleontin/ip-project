@@ -64,5 +64,10 @@ class User extends Authenticatable
     {
         return $this->hasOne('App\Profiles');
     }
+
+    public function visits()
+    {
+        return $this->hasOne('App\Visits');
+    }
 }
 

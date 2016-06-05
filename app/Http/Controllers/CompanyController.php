@@ -342,4 +342,12 @@ class CompanyController extends Controller
 
         return Response::json($companies);
     }
+
+    public function visitCompany()
+    {
+        $user_id = $_POST['user_id'];
+        $company_id = $_POST['company_id'];
+
+        
+    }
 }

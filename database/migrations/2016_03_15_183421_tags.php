@@ -42,7 +42,7 @@ class Tags extends Migration
      */
     public function down()
     {
-        Schema::drop('tags');
         Schema::drop('companies_tags');
+        Schema::drop('tags');
     }
 }
