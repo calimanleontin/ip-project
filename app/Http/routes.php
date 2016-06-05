@@ -71,6 +71,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/get-companies', 'CompanyController@getCompanies');
     Route::post('/api-login', 'UserController@apiLogin');
     Route::post('/visit-company', 'CompanyController@visitCompany');
+    Route::post('/assign-voucher', 'CompanyController@assignVoucher');
     Route::get('/get-visits-number', 'CompanyController@getVisits');
 
 });
