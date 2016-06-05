@@ -335,4 +335,11 @@ class CompanyController extends Controller
         $data = array_merge($companies, $tags);
         return Response::json($data);
     }
+
+    public function getCompanies()
+    {
+        $companies = Companies::all();
+
+        return Response::json($companies);
+    }
 }
