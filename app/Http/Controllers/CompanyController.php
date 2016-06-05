@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Companies;
 use App\Tags;
 use App\User;
+use App\Visits;
 use \Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
@@ -348,6 +349,19 @@ class CompanyController extends Controller
         $user_id = $_POST['user_id'];
         $company_id = $_POST['company_id'];
 
-        
+        $visit = Visits::where('user_id', $user_id)
+            ->where('company_id', $company_id)
+            ->first();
+
+        if(empty($visit))
+        {
+            $visit = new Visits();
+            $visit->company_id = $company_id;
+            $visit->user_id = $user_id;
+            $visit->visits = 0;
+        }
+        $visit->visits += 1;
+
+        $visit->save();
     }
 }
