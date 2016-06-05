@@ -193,4 +193,31 @@ class UserController extends Controller
             return Response::json(['status' => 500]);
         }
     }
+
+    /**
+     * @return bool
+     */
+    public function apiLogin()
+    {
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+
+        $user = User::where('email', $email)->first();
+
+        if (password_verify($password, $user->password))
+        {
+            if ($user->is_company())
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+        else
+        {
+            return false;
+        }
+    }
 }
