@@ -364,4 +364,23 @@ class CompanyController extends Controller
 
         $visit->save();
     }
+
+    public function getVisits()
+    {
+        $user_id = $_POST['user_id'];
+        $company_id = $_POST['company_id'];
+
+        $visit = Visits::where('user_id', $user_id)
+            ->where('company_id', $company_id)
+            ->first();
+
+        if(empty($visit))
+        {
+            return 0;
+        }
+        else
+        {
+            return $visit->visits;
+        }
+    }
 }
