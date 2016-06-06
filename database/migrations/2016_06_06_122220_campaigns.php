@@ -14,6 +14,7 @@ class Campaigns extends Migration
     {
         Schema::create('campaigns', function(Blueprint $table){
             $table->increments('id');
+            $table->text('title');
             $table->integer('company_id')->unsigned()->default(0);
             $table->foreign('company_id')
               ->references('id')
