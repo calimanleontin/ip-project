@@ -8,14 +8,18 @@
 <script>tinymce.init({ selector:'textarea' });</script>
 
 @section('content')
-    <div class="">
+    <div class="form-horizontal">
         <div class="form-group">
 
             {!! Form::open(array('url' => '/company/update', 'files' => true, 'class' => '')) !!}
 
-            <div class="form-group col-md-7">
-                {!! Form::label('name', 'Name:') !!}
-                {!! Form::text('name', $user->name, array('class' => 'form-control', 'required', 'placeholder' => 'Name')) !!}
+            <div class="form-group">
+                <!--{!! Form::label('name', 'Name:') !!}
+                {!! Form::text('name', $user->name, array('class' => 'form-control', 'required', 'placeholder' => 'Name')) !!}-->
+                <label class="ip-color control-label col-sm-2" for="name">Name:</label>
+                <div class="col-sm-4">
+                    <input class="form-control ip-input reset-border ip-button" required="required" placeholder="Name" name="name" value="denis" id="name" type="text">
+                </div>
             </div>
 
             @if(!empty($company->image))
@@ -24,63 +28,77 @@
                 </div>
             @endif
 
-            <div class="form-group col-md-7">
-                {!! Form::label('image', 'Upload avatar:') !!}
-                {!! Form::file('image', null) !!}
+            <div class="form-group">
+                <!--{!! Form::label('image', 'Upload avatar:') !!}
+                {!! Form::file('image', null) !!}-->
+                <label class="ip-color control-label col-sm-2" for="image">Upload avatar:</label>
+                <div class="col-sm-4">
+                    <input class="form-control ip-input reset-border ip-button" name="image" id="image" type="file">
+                </div>
             </div>
 
-            <div class="form-group col-md-10">
-                <label for="description">Description:</label>
+            <div class="form-group">
+                <label class="ip-color control-label col-sm-2" for="description">Description:</label>
                 <textarea name = 'description' class="form-control">{!! $company->description !!}</textarea>
             </div>
 
-            <div class="form-group col-md-7">
-                <label for="">Map</label>
-                <input type="text" id="searchmap" placeholder="Search" class="form-control">
-                <div id="map-canvas"></div>
-                <script>
+            <div class="form-group">
+                <label class="ip-color control-label col-sm-2" for="">Map</label>
+                <div class="col-sm-4">
+                    <input type="text" id="searchmap" placeholder="Search" class="form-control ip-input reset-border ip-button">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-4">
+                    <div id="map-canvas"></div>
+                    <script>
 
-                    var map = new google.maps.Map(document.getElementById('map-canvas'),{
-                        center:{
-                            lat: <?php echo $company->lat; ?>,
-                            lng: <?php echo $company->lng; ?>
-                        },
-                        zoom:15
-                    });
+                        var map = new google.maps.Map(document.getElementById('map-canvas'),{
+                            center:{
+                                lat: <?php echo $company->lat; ?>,
+                                lng: <?php echo $company->lng; ?>
+                            },
+                            zoom:15
+                        });
 
-                    var marker = new google.maps.Marker({
-                        position: {
-                            lat: <?php echo $company->lat; ?>,
-                            lng: <?php echo $company->lng; ?>
-                        },
-                        map: map,
-                        draggable: true
-                    });
+                        var marker = new google.maps.Marker({
+                            position: {
+                                lat: <?php echo $company->lat; ?>,
+                                lng: <?php echo $company->lng; ?>
+                            },
+                            map: map,
+                            draggable: true
+                        });
 
-                </script>
-                <script src="/js/editMap.js"></script> <!-- load the map -->
-
-
+                    </script>
+                    <script src="/js/editMap.js"></script> <!-- load the map -->
+                </div>
             </div>
 
-            <div class="form-group col-md-7">
-                <label for="lat">Lat</label>
-                <input type="text" class="form-control input-sm" value = "{{ $company->lat }}" name="lat" id="lat" required>
+            <div class="form-group">
+                <label class="ip-color control-label col-sm-2" for="lat">Lat</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control ip-input reset-border ip-button input-sm" value = "{{ $company->lat }}" name="lat" id="lat" required>
+                </div>
             </div>
 
-            <div class="form-group col-md-7">
-                <label for="lng">Lng</label>
-                <input type="text" class="form-control input-sm" value = "{{ $company->lng }}" name="lng" id="lng" required>
+            <div class="form-group">
+                <label class="ip-color control-label col-sm-2" for="lng">Lng</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control ip-input reset-border ip-button input-sm" value = "{{ $company->lng }}" name="lng" id="lng" required>
+                </div>
             </div>
 
 
             <div class="col-md-2 submit-management-down submit-management-left">
-                {!! Form::submit('Submit', ['class'=>'form-control btn btn-default']) !!}
+                <!--{!! Form::submit('Submit', ['class'=>'form-control btn btn-default']) !!}-->
+                <input class="form-control btn ip-button primary-ip-button reset-border" value="Submit" type="submit">
             </div>
 
             {!! Form::close() !!}
 
-            <div class="col-md-9">
+            <!--<div class="col-md-9">
                 <h4>
                     Actual tags:
                 </h4>
@@ -95,16 +113,16 @@
 
 
             <form ng-submit="submitTag()">
-                    <div class="col-md-7">
-                        <label for="tags">Tags:</label>
-                        <select class="form-control" ng-model="tagData.tag">
-                            @foreach($tags as $tag)
-                                <option value="{{ $tag->id }}">{{ $tag->name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <input type="submit" value = 'Add tag' class="btn btn-default">
-                </form>
+                <div class="col-md-7">
+                    <label for="tags">Tags:</label>
+                    <select class="form-control" ng-model="tagData.tag">
+                        @foreach($tags as $tag)
+                            <option value="{{ $tag->id }}">{{ $tag->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <input type="submit" value = 'Add tag' class="btn btn-default">
+            </form>-->
 
         </div>
 
