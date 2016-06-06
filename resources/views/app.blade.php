@@ -130,6 +130,9 @@
                             <li>
                                 <a class="ip-color" href="{{ url('/company/edit') }}"><btn class="btn primary-ip-button ip-button reset-border">Edit Company</btn></a>
                             </li>
+                            <li>
+                                <a class="ip-color" href="{{ url('/company/campaign/create') }}"><btn class="btn primary-ip-button ip-button reset-border">Create campaign</btn></a>
+                            </li>
 
                             <li>
                                 <a class="ip-color" href="{{ url('/auth/change-password') }}"><btn class="btn primary-ip-button ip-button reset-border">Change Password</btn></a>
