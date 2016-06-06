@@ -29,4 +29,9 @@ class CampaignsController extends Controller
     $campaign = Campaign::find($id);
     return view('campaigns/viewEntity')->with('campaign', $campaign);
   }
+
+  function campaignsListing(Request $request) {
+    $campaigns = Campaign::all();
+    return view('campaigns/listing')->with('campaigns', $campaigns);
+  }
 }

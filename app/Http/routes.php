@@ -48,6 +48,7 @@ Route::group(['middleware' => ['web']], function () {
 
     Route::get('/company/campaign/create', 'CampaignsController@getCreate');
     Route::post('/company/campaign/create', 'CampaignsController@postCreate');
+    Route::get('/campaigns', 'CampaignsController@campaignsListing');
     Route::get('/campaigns/{id}', 'CampaignsController@viewEntity');
 
 
