@@ -15,8 +15,11 @@
 
 
             @if(!empty($company->image))
-                <div class="form-group img-rounded">
-                    <img src="/images/companies/{{ $company->image }}"  style="padding: 30px;">
+                <div class="form-group">
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-10 form-group img-rounded">
+                        <img src="/images/companies/{{ $company->image }}" class="img-rounded" style="padding: 15px;">
+                    </div>
                 </div>
             @endif
 
@@ -41,7 +44,7 @@
             <div class="form-group">
                 <label class="ip-color control-label col-sm-2" for="description">Description:</label>
             
-            <div class="form-group col-sm-10">
+            <div class="form-group ip-wysiwyg col-sm-10">
                 <textarea name = 'description' class="form-control">{!! $company->description !!}</textarea>
             </div>
             </div>
