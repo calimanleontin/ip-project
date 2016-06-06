@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Campaign;
 use App\Companies;
 use App\Tags;
 use App\User;
@@ -352,6 +353,32 @@ class CompanyController extends Controller
         $visit = Visits::where('user_id', $user_id)
             ->where('company_id', $company_id)
             ->first();
+
+        $campaigns = Campaign::where('company_id', $company_id)->get();
+        $user = User::find($user_id);
+        $winner_user = [
+            'id' => $user->id,
+            'email' => $user->email,
+            'name' => $user->name,
+        ];
+        if (!empty($campaigns)) {
+            foreach ($campaigns as $campaign) {
+                $winners = [];
+                if (empty($campaign->winners)) {
+                    $winner_user['place'] = 1;
+                    $winners[] = $winner_user;
+                }
+                else {
+                    $winners = json_decode($campaign->winners);
+                    if (count($winners < 3)) {
+                        $winner_user['place'] = count($winners) + 1;
+                        $winners[] = $winner_user;
+                    }
+                }
+                $campaign->winners = json_encode($winners);
+                $campaign->save();
+            }
+        }
 
         if(empty($visit))
         {

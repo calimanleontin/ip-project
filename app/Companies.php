@@ -37,6 +37,14 @@ class Companies extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
+    public function campaigns()
+    {
+        return $this->hasMany('App\Campaign');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function grades()
     {
         return $this->hasMany('App\Grades');
