@@ -13,7 +13,7 @@
                 <h5>Winners:</h5>
                 <ul>
                     @foreach ($winners as $key => $winner)
-                        <li>{{ $winner['place'] }}. {{ $winner['name'] }}</li>
+                        <li>{{ $winner['place'] }}. {{ $winner['name'] }} ({{ $winner['email'] }})</li>
                     @endforeach
                 </ul>
             </div>
