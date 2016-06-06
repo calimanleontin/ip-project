@@ -199,8 +199,8 @@ class UserController extends Controller
      */
     public function apiLogin()
     {
-        $email = $_POST['email'];
-        $password = $_POST['password'];
+        $email = $_GET['email'];
+        $password = $_GET['password'];
 
         $user = User::where('email', $email)->first();
 
@@ -208,7 +208,7 @@ class UserController extends Controller
         {
             if ($user->is_company())
             {
-                return false;
+                return 0;
             }
             else
             {
@@ -217,7 +217,7 @@ class UserController extends Controller
         }
         else
         {
-            return false;
+            return 0;
         }
     }
 }

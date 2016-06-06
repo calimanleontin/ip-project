@@ -346,8 +346,8 @@ class CompanyController extends Controller
 
     public function visitCompany()
     {
-        $user_id = $_POST['user_id'];
-        $company_id = $_POST['company_id'];
+        $user_id = $_GET['user_id'];
+        $company_id = $_GET['company_id'];
 
         $visit = Visits::where('user_id', $user_id)
             ->where('company_id', $company_id)
@@ -386,8 +386,8 @@ class CompanyController extends Controller
 
     public function assignVoucher()
     {
-        $user_id = $_POST['user_id'];
-        $voucher = $_POST['voucher'];
+        $user_id = $_GET['user_id'];
+        $voucher = $_GET['voucher'];
 
         $user = User::find($user_id);
 
