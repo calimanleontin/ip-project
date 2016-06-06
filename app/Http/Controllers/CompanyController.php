@@ -363,6 +363,8 @@ class CompanyController extends Controller
         $visit->visits += 1;
 
         $visit->save();
+
+        return $visit->visits;
     }
 
     public function getVisits()

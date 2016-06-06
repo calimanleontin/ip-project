@@ -108,35 +108,35 @@
                     </li>
                 @else
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->name }} <span class="caret"></span></a>
-                        <ul class="dropdown-menu" role="menu">
+                        <a href="#" class="dropdown-toggle ip-dropdown-menu" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->name }} <span class="caret"></span></a>
+                        <ul class="dropdown-menu ip-light-color" role="menu">
                             @if(!Auth::guest() and Auth::user()->is_company() == false)
                                 <li>
-                                    <a href="{{ url('/my-profile') }}"><btn class="btn btn-default primary-ip-button ip-button reset-border">My Profile</btn></a>
+                                    <a class="ip-color" href="{{ url('/my-profile') }}"><btn class="btn primary-ip-button ip-button reset-border">My Profile</btn></a>
                                 </li>
 
                                 <li>
-                                    <a href="{{ url('/auth/change-password') }}"><btn class="btn btn-default primary-ip-button ip-button reset-border">Change Password</btn></a>
+                                    <a class="ip-color" href="{{ url('/auth/change-password') }}"><btn class="btn primary-ip-button ip-button reset-border">Change Password</btn></a>
                                 </li>
                             @endif
 
                         @if(!Auth::guest() and Auth::user()->is_admin())
                                 <li>
-                                    <a href="{{ url('/create-tag') }}">New Tag</a>
+                                    <a href="{{ url('/create-tag') }}"><btn class="btn primary-ip-button ip-button reset-border">New Tag</btn></a>
                                 </li>
                             @endif
 
                         @if(!Auth::guest() and Auth::user()->is_company())
                             <li>
-                                <a href="{{ url('/company/edit') }}">Edit Company</a>
+                                <a class="ip-color" href="{{ url('/company/edit') }}"><btn class="btn primary-ip-button ip-button reset-border">Edit Company</btn></a>
                             </li>
 
                             <li>
-                                <a href="{{ url('/auth/change-password') }}">Change Password</a>
+                                <a class="ip-color" href="{{ url('/auth/change-password') }}"><btn class="btn primary-ip-button ip-button reset-border">Change Password</btn></a>
                             </li>
                         @endif
                             <li>
-                                <a href="{{ url('/auth/logout') }}">Logout</a>
+                                <a class="ip-color" href="{{ url('/auth/logout') }}"><btn class="btn primary-ip-button ip-button reset-border">Logout</btn></a>
                             </li>
                         </ul>
                     </li>

@@ -36,6 +36,12 @@ select.reset-select {
 	float: left;
 }
 /* Removes annoying bootstrap hover effect */
+li.hover,
+li:hover,
+li:focus,
+li.focus,
+li:active,
+a.hover,
 a:hover,
 a:focus,
 a.focus,
@@ -59,6 +65,13 @@ a:active {
 }
 
 /* Custom rules */
+.ip-light-color {
+	background-color: #64b5d0 !important;
+}
+.ip-light-color a:hover {
+	background-color: transparent !important;
+	background-image: url('') !important;
+}
 select.ip-select {
 	/* TO DO: add custom arrow*/
 }
@@ -132,25 +145,38 @@ select.ip-input option {
 #calcRoute {
 	position: absolute;
 	top: 5px;
-	left: 5px;
+	left: 0;
+	right: 0;
+	margin: auto;
+	z-index: 10;
+	border: 1px solid #40509c !important;
 }
 .modal-dialog {
 	margin-bottom: 0 !important;
 }
 .company-image {
 	float: right !important;
-    margin: 20px !important;
+    margin: 0 0 10px 10px !important;
     border-style: solid;
-    border-color: ##40509c !important;
+    border-color: #40509c !important;
     border-radius: 6px;
     width: 50% !important;
     height: auto !important;
 }
 .ip-color {
-	color: #2196bc !important
+	color: #2196bc !important;
 }
 .ip-title-color {
 	color: #40509c !important;
+}
+textarea {
+	border-color: #40509c !important;
+	color: #2196bc !important;
+}
+.ip-dropdown-menu {
+	padding: 21px 20px !important;
+	font-size: 14px;
+	color: #fff;
 }
 
 /* Custom paddings, margins */
@@ -167,4 +193,7 @@ select.ip-input option {
 }
 .lh32 {
 	line-height: 32px !important;
+}
+.lh29 {
+	line-height: 29px !important;
 }
