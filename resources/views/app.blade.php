@@ -87,6 +87,10 @@
                                         <li>
                                             <input type="submit" value="Search" class="btn ip-button primary-ip-button reset-border" onclick="saveLocation()">
                                         </li>
+
+                                        <li>
+                                            <a class="btn ip-button primary-ip-button" href="/campaigns">View campaigns</a>
+                                        </li>
                                     </ul>
                                 </form>
                             </div>
