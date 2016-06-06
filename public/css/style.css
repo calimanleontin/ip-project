@@ -18,6 +18,10 @@
 .reset-padding {
 	padding: 0 !important;
 }
+.reset-box-shadow {
+	-webkit-box-shadow: 0 0 0 !important;
+    box-shadow: 0 0 0 !important;
+}
 select.reset-select {
 	-webkit-appearance: none;
 	-moz-appearance: none;
@@ -25,10 +29,11 @@ select.reset-select {
 .overflow-hidden {
 	overflow: hidden !important;
 }
-
-/* Custom rules */
-select.ip-select {
-	/* TO DO: add custom arrow*/
+.fr {
+	float: right;
+}
+.fl {
+	float: left;
 }
 /* Removes annoying bootstrap hover effect */
 a:hover,
@@ -51,6 +56,11 @@ a:active {
 
 :-ms-input-placeholder {  
    color: #fff !important;
+}
+
+/* Custom rules */
+select.ip-select {
+	/* TO DO: add custom arrow*/
 }
 .ip-button {
 	color: #fff !important;
@@ -110,6 +120,38 @@ select.ip-input option {
     background-color: #2196bc !important;
     border-color: #40509c !important;
 }
+.ip-list-group-item-companies {
+	border-color: #40509c !important;
+	border-right: 0 !important;
+	border-left: 0 !important;
+}
+.modal-body {
+	position: relative;
+	padding: 0 !important;
+}
+#calcRoute {
+	position: absolute;
+	top: 5px;
+	left: 5px;
+}
+.modal-dialog {
+	margin-bottom: 0 !important;
+}
+.company-image {
+	float: right !important;
+    margin: 20px !important;
+    border-style: solid;
+    border-color: ##40509c !important;
+    border-radius: 6px;
+    width: 50% !important;
+    height: auto !important;
+}
+.ip-color {
+	color: #2196bc !important
+}
+.ip-title-color {
+	color: #40509c !important;
+}
 
 /* Custom paddings, margins */
 .ptb14 {
@@ -119,4 +161,10 @@ select.ip-input option {
 .ptb20 {
 	padding-top: 20px !important;
 	padding-bottom: 20px !important;
+}
+.m0 {
+	margin: 0 !important;
+}
+.lh32 {
+	line-height: 32px !important;
 }

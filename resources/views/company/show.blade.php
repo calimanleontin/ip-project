@@ -5,21 +5,12 @@
 @endsection
 
 @section('content')
-    <div class="">
-        <div class="panel-body">
-
-            <div class="list-group">
-                @if(!empty($company->image))
-                    <div class="list-group-item">
-                        <img src="/images/companies/{{ $company->image }}"  class="company-image">
-                    </div>
-                @endif
-            </div>
-            <div class="list-group">
-                <div class="list-group-item">
-                    <h3>Description: </h3>{!! $company->description !!}
-                </div>
-            </div>
+        <div class="ip-color">
+            <h3 class="ip-title-color">Description: </h3>
+            @if(!empty($company->image))
+                <img src="/images/companies/{{ $company->image }}"  class="company-image">
+            @endif
+            {!! $company->description !!}
         </div>
         @if(!Auth::guest() and Auth::user()->is_company() == false)
             <div class="panel-body">
@@ -78,29 +69,25 @@
             </div>
         @endif
 
-        <div class="panel-body">
-            <div class="list-group">
-                <div class="list-group-item">
-                    <h3>Comments:</h3>
-                </div>
-            </div>
-
-            <div class="" ng-hide="loading" ng-repeat="comment in comments">
-                <div class="list-group">
-                    <div class="list-group-item">
-                        By <strong>@{{comment.user.name}}</strong> on @{{ comment.created_at }}
-                    </div>
-                    <div class="list-group-item">
-                        @{{ comment.content }}
-                    </div>
-                    @if(!Auth::guest() and Auth::user()->is_admin())
-                        <div class="list-group-item">
-                            <a href="" ng-click="deleteComment(comment.id)" class="text-muted">DeleteComment</a>
-                        </div>
-                    @endif
-                </div>
+        <div class="list-group">
+            <div class="list-group-item">
+                <h3>Comments:</h3>
             </div>
         </div>
 
-    </div>
+        <div class="" ng-hide="loading" ng-repeat="comment in comments">
+            <div class="list-group">
+                <div class="list-group-item">
+                    By <strong>@{{comment.user.name}}</strong> on @{{ comment.created_at }}
+                </div>
+                <div class="list-group-item">
+                    @{{ comment.content }}
+                </div>
+                @if(!Auth::guest() and Auth::user()->is_admin())
+                    <div class="list-group-item">
+                        <a href="" ng-click="deleteComment(comment.id)" class="text-muted">DeleteComment</a>
+                    </div>
+                @endif
+            </div>
+        </div>
 @endsection
