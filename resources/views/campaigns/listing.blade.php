@@ -11,7 +11,9 @@
                     <div class="list-group-item ip-list-group-item-companies reset-border-radius">
                         <ul class="list-inline m0 be-cleared">
                             <li class="lh32">
-                                <a href="/campaigns/{{ $campaign->id }}">{{ $campaign->title }}</a>
+                                <h4>
+                                    <a href="/campaigns/{{ $campaign->id }}">{{ $campaign->title }}</a>
+                                </h4>
                                 <span>Starts: {{ $campaign->start }}</span>
                                 <span>Ends: {{ $campaign->end }}</span>
                             </li>
