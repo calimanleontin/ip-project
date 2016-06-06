@@ -24,7 +24,7 @@
         <div class="form-group">
             <label class="ip-color control-label col-sm-2" for="end_date">End date:</label>
             <div class="col-sm-4">
-                <input type="text" name="start_date" class="form-control ip-input reset-border ip-button" id="end_date" placeholder="End date">
+                <input type="text" name="end_date" class="form-control ip-input reset-border ip-button" id="end_date" placeholder="End date">
             </div>
         </div>
 
@@ -34,8 +34,12 @@
     </form>
     <script type="text/javascript">
     	  $(function() {
-		    $( "#start_date" ).datepicker();
-		    $( "#end_date" ).datepicker();
+		    $( "#start_date" ).datepicker({
+                dateFormat: 'yy-mm-dd'
+            });
+		    $( "#end_date" ).datepicker({
+                dateFormat: 'yy-mm-dd'
+            });
 		  });
     </script>
 @endsection

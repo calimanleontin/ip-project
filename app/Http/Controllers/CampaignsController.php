@@ -22,7 +22,7 @@ class CampaignsController extends Controller
     $campaign->start = $request->get('start_date');
     $campaign->end = $request->get('end_date');
     $campaign->save();
-    return redirect('campaigns/' . $campaign->getAttribute('id'))->with('success', 'Ati creat campania cu succes!');
+    return redirect('campaigns/' . $campaign->getAttribute('id'));
   }
 
   function viewEntity($id, Request $request) {
