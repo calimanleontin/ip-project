@@ -13,6 +13,13 @@
 
             {!! Form::open(array('url' => '/company/update', 'files' => true, 'class' => '')) !!}
 
+
+            @if(!empty($company->image))
+                <div class="form-group img-rounded">
+                    <img src="/images/companies/{{ $company->image }}"  style="padding: 30px;">
+                </div>
+            @endif
+
             <div class="form-group">
                 <!--{!! Form::label('name', 'Name:') !!}
                 {!! Form::text('name', $user->name, array('class' => 'form-control', 'required', 'placeholder' => 'Name')) !!}-->
@@ -21,12 +28,6 @@
                     <input class="form-control ip-input reset-border ip-button" required="required" placeholder="Name" name="name" value="denis" id="name" type="text">
                 </div>
             </div>
-
-            @if(!empty($company->image))
-                <div class="img-rounded col-md-7">
-                    <img src="/images/companies/{{ $company->image }}"  class="company-image">
-                </div>
-            @endif
 
             <div class="form-group">
                 <!--{!! Form::label('image', 'Upload avatar:') !!}
@@ -39,7 +40,10 @@
 
             <div class="form-group">
                 <label class="ip-color control-label col-sm-2" for="description">Description:</label>
+            
+            <div class="form-group col-sm-10">
                 <textarea name = 'description' class="form-control">{!! $company->description !!}</textarea>
+            </div>
             </div>
 
             <div class="form-group">
@@ -98,21 +102,21 @@
 
             {!! Form::close() !!}
 
-            <!--<div class="col-md-9">
-                <h4>
-                    Actual tags:
-                </h4>
-            </div>
-            <div class="col-md-9" ng-hide="loading" ng-repeat="tag in tags">
+            <!--<form ng-submit="submitTag()">
+                
+                <div class="form-group">
+                    <h4>
+                        Actual tags:
+                    </h4>
+                </div>
+                <div class="col-md-9" ng-hide="loading" ng-repeat="tag in tags">
 
-                <ul class="list-inline" >
-                    <li> @{{ tag.name }}</li>
-                    <li><a href="" ng-click="deleteTag(tag.id)" class="text-muted">x</a></li>
-                </ul>
-            </div>
-
-
-            <form ng-submit="submitTag()">
+                    <ul class="list-inline" >
+                        <li> @{{ tag.name }}</li>
+                        <li><a href="" ng-click="deleteTag(tag.id)" class="text-muted">x</a></li>
+                    </ul>
+                </div>
+                
                 <div class="col-md-7">
                     <label for="tags">Tags:</label>
                     <select class="form-control" ng-model="tagData.tag">
