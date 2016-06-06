@@ -6,3 +6,4 @@ Homestead.json
 .env
 /public/images
 .idea
+_ide_helper.php
