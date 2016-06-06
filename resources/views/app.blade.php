@@ -112,7 +112,7 @@
                         <ul class="dropdown-menu ip-light-color" role="menu">
                             @if(!Auth::guest() and Auth::user()->is_company() == false)
                                 <li>
-                                    <a class="ip-color" href="{{ url('/my-profile') }}"><btn class="btn primary-ip-button ip-button reset-border">My Profile</btn></a>
+                                    <a class="ip-color" href="{{ url('/edit-profile') }}"><btn class="btn primary-ip-button ip-button reset-border">My Profile</btn></a>
                                 </li>
 
                                 <li>

@@ -77,7 +77,7 @@ class ProfileController extends Controller
 
         $profile->save();
 
-        return redirect('/my-profile')
+        return redirect('/edit-profile')
             ->withMessage('Updates made successfully');
     }
 }
