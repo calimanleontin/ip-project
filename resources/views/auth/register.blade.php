@@ -8,12 +8,12 @@
 
 
         <div class="form-group">
-            <label class="control-label col-sm-2" for="username">Username:</label>
+            <label class="ip-color control-label col-sm-2" for="username">Username:</label>
             <div class="col-sm-4">
                 @if(!empty($username))
-                    <input type="text" class="form-control" name = 'username' id="username" value = "{{$username}}" placeholder="Enter username">
+                    <input type="text" class="form-control ip-input reset-border ip-button" name = 'username' id="username" value = "{{$username}}" placeholder="Enter username">
                 @else
-                    <input type="text" name = 'username' class="form-control" id="username"  placeholder="Enter username">
+                    <input type="text" name = 'username' class="form-control ip-input reset-border ip-button" id="username"  placeholder="Enter username">
                 @endif
 
             </div>
@@ -21,33 +21,33 @@
 
 
         <div class="form-group">
-            <label class="control-label col-sm-2" for="email">Email:</label>
+            <label class="ip-color control-label col-sm-2" for="email">Email:</label>
             <div class="col-sm-4">
                 @if(!empty($email))
-                    <input type="email" class="form-control" name ='email' value="{{$email}}" id="email" placeholder="Enter email">
+                    <input type="email" class="form-control ip-input reset-border ip-button" name ='email' value="{{$email}}" id="email" placeholder="Enter email">
                 @else
-                    <input type="email" class="form-control" name="email" id="email" placeholder="Enter email">
+                    <input type="email" class="form-control ip-input reset-border ip-button" name="email" id="email" placeholder="Enter email">
                 @endif
 
             </div>
         </div>
 
         <div class="form-group">
-            <label class="control-label col-sm-2" for="password">Password:</label>
+            <label class="ip-color control-label col-sm-2" for="password">Password:</label>
             <div class="col-sm-4">
-                <input type="password" class="form-control" name='password' id="password" placeholder="Enter password">
+                <input type="password" class="form-control ip-input reset-border ip-button" name='password' id="password" placeholder="Enter password">
             </div>
         </div>
 
         <div class="form-group">
-            <label class="control-label col-sm-2" for="confirm">Confirm:</label>
+            <label class="ip-color control-label col-sm-2" for="confirm">Confirm:</label>
             <div class="col-sm-4">
-                <input type="password" class="form-control" name='confirm' id="confirm" placeholder="Confirm password">
+                <input type="password" class="form-control ip-input reset-border ip-button" name='confirm' id="confirm" placeholder="Confirm password">
             </div>
         </div>
 
         <div class="col-sm-2">
-            <input type="submit" class="form-control btn btn-success" value="Register">
+            <input type="submit" class="form-control btn ip-button primary-ip-button reset-border" value="Register">
         </div>
 
     </form>
