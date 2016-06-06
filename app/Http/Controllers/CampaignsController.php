@@ -27,7 +27,8 @@ class CampaignsController extends Controller
 
   function viewEntity($id, Request $request) {
     $campaign = Campaign::find($id);
-    return view('campaigns/viewEntity')->with('campaign', $campaign);
+    $winners = !empty($campaign->winners) ? json_decode($campaign->winners, TRUE) : [];
+    return view('campaigns/viewEntity')->with('campaign', $campaign)->with('winners', $winners);
   }
 
   function campaignsListing(Request $request) {

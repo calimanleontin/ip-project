@@ -12,8 +12,8 @@
             <div>
                 <h5>Winners:</h5>
                 <ul>
-                    @foreach ($winners as $key => $name)
-                        <li>{{ $key }}. {{ $name }}</li>
+                    @foreach ($winners as $key => $winner)
+                        <li>{{ $winner['place'] }}. {{ $winner['name'] }}</li>
                     @endforeach
                 </ul>
             </div>
