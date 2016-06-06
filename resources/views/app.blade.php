@@ -155,13 +155,11 @@
     @endif
     @if ($errors->any())
         <div class='flash alert-danger'>
-            <ul class="panel-body">
-                @foreach ( $errors->all() as $error )
-                    <li>
-                        {{ $error }}
-                    </li>
-                @endforeach
-            </ul>
+            @foreach ( $errors->all() as $error )
+                <p class="panel-body">
+                    {{ $error }}
+                </p>
+            @endforeach
         </div>
     @endif
 

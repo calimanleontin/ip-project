@@ -28,7 +28,7 @@
                 {!! Form::text('name', $user->name, array('class' => 'form-control', 'required', 'placeholder' => 'Name')) !!}-->
                 <label class="ip-color control-label col-sm-2" for="name">Name:</label>
                 <div class="col-sm-4">
-                    <input class="form-control ip-input reset-border ip-button" required="required" placeholder="Name" name="name" value="denis" id="name" type="text">
+                    <input class="form-control ip-input reset-border ip-button" required="required" placeholder="Name" name="name" value="{{ $user->name }}" id="name" type="text">
                 </div>
             </div>
 
