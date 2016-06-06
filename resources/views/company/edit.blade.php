@@ -97,39 +97,44 @@
                 </div>
             </div>
 
-
-            <div class="col-md-2 submit-management-down submit-management-left">
-                <!--{!! Form::submit('Submit', ['class'=>'form-control btn btn-default']) !!}-->
-                <input class="form-control btn ip-button primary-ip-button reset-border" value="Submit" type="submit">
+            <div class="col-md-12 form-group">
+                <div class="col-md-2 submit-management-down submit-management-left">
+                    <!--{!! Form::submit('Submit', ['class'=>'form-control btn btn-default']) !!}-->
+                    <input class="form-control btn ip-button primary-ip-button reset-border" value="Submit" type="submit">
+                </div>
             </div>
 
             {!! Form::close() !!}
 
-            <!--<form ng-submit="submitTag()">
+            <form ng-submit="submitTag()">
                 
                 <div class="form-group">
-                    <h4>
-                        Actual tags:
-                    </h4>
-                </div>
-                <div class="col-md-9" ng-hide="loading" ng-repeat="tag in tags">
+                    <label class="ip-color control-label col-sm-2" for="lng">Actual tags: </label>
+                    <div class="col-sm-10" ng-hide="loading" ng-repeat="tag in tags">
 
-                    <ul class="list-inline" >
-                        <li> @{{ tag.name }}</li>
-                        <li><a href="" ng-click="deleteTag(tag.id)" class="text-muted">x</a></li>
-                    </ul>
+                        <ul class="list-inline" >
+                            <li> @{{ tag.name }}</li>
+                            <li><a href="" ng-click="deleteTag(tag.id)" class="text-muted">x</a></li>
+                        </ul>
+                    </div>
                 </div>
                 
-                <div class="col-md-7">
-                    <label for="tags">Tags:</label>
-                    <select class="form-control" ng-model="tagData.tag">
-                        @foreach($tags as $tag)
-                            <option value="{{ $tag->id }}">{{ $tag->name }}</option>
-                        @endforeach
-                    </select>
+                <div class="form-group">
+                    <label class="ip-color control-label col-sm-2" for="tags">Tags:</label>
+                    <div class="col-sm-10">
+                        <select class="form-control col-sm-10" ng-model="tagData.tag">
+                            @foreach($tags as $tag)
+                                <option value="{{ $tag->id }}">{{ $tag->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
                 </div>
-                <input type="submit" value = 'Add tag' class="btn btn-default">
-            </form>-->
+                <div class="form-group col-md-12">
+                    <div class="col-sm-2">
+                        <input type="submit" value = 'Add tag' class="form-control btn ip-button primary-ip-button reset-border">
+                    </div>
+                </div>
+            </form>
 
         </div>
 
