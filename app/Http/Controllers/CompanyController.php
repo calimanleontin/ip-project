@@ -369,10 +369,19 @@ class CompanyController extends Controller
                     $winners[] = $winner_user;
                 }
                 else {
-                    $winners = json_decode($campaign->winners);
+                    $winners = json_decode($campaign->winners, TRUE);
                     if (count($winners < 3)) {
-                        $winner_user['place'] = count($winners) + 1;
-                        $winners[] = $winner_user;
+                        $flag = FALSE;
+                        foreach ($winners as $already_a_winner) {
+                            if ($already_a_winner['id'] == $winner_user['id']) {
+                                $flag = TRUE;
+                                break;
+                            }
+                        }
+                        if (!$flag) {
+                            $winner_user['place'] = count($winners) + 1;
+                            $winners[] = $winner_user;
+                        }
                     }
                 }
                 $campaign->winners = json_encode($winners);
